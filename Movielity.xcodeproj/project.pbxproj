@@ -15,7 +15,28 @@
 		019E03C52CB52275008753E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 019E03C42CB52275008753E9 /* Base */; };
 		019E03CD2CB5228A008753E9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 019E03CC2CB5228A008753E9 /* .gitignore */; };
 		019E03D12CB52C72008753E9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03D02CB52C72008753E9 /* NetworkManager.swift */; };
+		AA6522002CB5345800B56E01 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA6521FF2CB5345800B56E01 /* SnapKit */; };
+		AA6522062CB5352400B56E01 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA6522052CB5352400B56E01 /* RealmSwift */; };
+		AA6522072CB5353100B56E01 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA6522052CB5352400B56E01 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		AA65220B2CB5359200B56E01 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AA65220A2CB5359200B56E01 /* RxCocoa */; };
+		AA65220D2CB5359200B56E01 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA65220C2CB5359200B56E01 /* RxSwift */; };
+		AA6522102CB535A300B56E01 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AA65220F2CB535A300B56E01 /* Alamofire */; };
+		AA6522132CB535BD00B56E01 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AA6522122CB535BD00B56E01 /* Then */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AA6522082CB5353100B56E01 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AA6522072CB5353100B56E01 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		019E03B52CB52274008753E9 /* Movielity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movielity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +56,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6522102CB535A300B56E01 /* Alamofire in Frameworks */,
+				AA6522132CB535BD00B56E01 /* Then in Frameworks */,
+				AA65220B2CB5359200B56E01 /* RxCocoa in Frameworks */,
+				AA6522062CB5352400B56E01 /* RealmSwift in Frameworks */,
+				AA65220D2CB5359200B56E01 /* RxSwift in Frameworks */,
+				AA6522002CB5345800B56E01 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,12 +110,21 @@
 				019E03B12CB52274008753E9 /* Sources */,
 				019E03B22CB52274008753E9 /* Frameworks */,
 				019E03B32CB52274008753E9 /* Resources */,
+				AA6522082CB5353100B56E01 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Movielity;
+			packageProductDependencies = (
+				AA6521FF2CB5345800B56E01 /* SnapKit */,
+				AA6522052CB5352400B56E01 /* RealmSwift */,
+				AA65220A2CB5359200B56E01 /* RxCocoa */,
+				AA65220C2CB5359200B56E01 /* RxSwift */,
+				AA65220F2CB535A300B56E01 /* Alamofire */,
+				AA6522122CB535BD00B56E01 /* Then */,
+			);
 			productName = Movielity;
 			productReference = 019E03B52CB52274008753E9 /* Movielity.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +153,13 @@
 				Base,
 			);
 			mainGroup = 019E03AC2CB52274008753E9;
+			packageReferences = (
+				AA6521FE2CB5345800B56E01 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AA6522042CB5352400B56E01 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				AA6522092CB5359200B56E01 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				AA65220E2CB535A300B56E01 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				AA6522112CB535BD00B56E01 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = 019E03B62CB52274008753E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -302,6 +345,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movielity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "무빌리티";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -329,6 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movielity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "무빌리티";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -369,6 +414,82 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA6521FE2CB5345800B56E01 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		AA6522042CB5352400B56E01 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.54.0;
+			};
+		};
+		AA6522092CB5359200B56E01 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.8.0;
+			};
+		};
+		AA65220E2CB535A300B56E01 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		AA6522112CB535BD00B56E01 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA6521FF2CB5345800B56E01 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6521FE2CB5345800B56E01 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		AA6522052CB5352400B56E01 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6522042CB5352400B56E01 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		AA65220A2CB5359200B56E01 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6522092CB5359200B56E01 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AA65220C2CB5359200B56E01 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6522092CB5359200B56E01 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		AA65220F2CB535A300B56E01 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA65220E2CB535A300B56E01 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		AA6522122CB535BD00B56E01 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA6522112CB535BD00B56E01 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 019E03AD2CB52274008753E9 /* Project object */;
 }
