@@ -5,7 +5,7 @@
 - **PR** : `[PR/#33] 메인 뷰 UI 구현`
 - **Merge** : `[MERGE/#33(이슈 번호)] -> develop`
 
-### Commit Convention
+### Commit Message Convention
 - [feat] 기능 추가
 - [UI] : 화면 추가
 - [Fix] : 버그 수정
