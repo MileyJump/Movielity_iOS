@@ -63,13 +63,19 @@ extension Router: TargetType {
     }
     
     var queryItems: [URLQueryItem]? {
+        let api_key = APIKey.tmdbKey
+        
         switch self {
         case .searchMovie(let query):
-            return [URLQueryItem(name: "query", value: query)]
+            return [URLQueryItem(name: "query", value: query),
+                    URLQueryItem(name: "api_key", value: api_key)
+            ]
         case .searchSeries(let query):
-            return [URLQueryItem(name: "query", value: query)]
+            return [URLQueryItem(name: "query", value: query),
+                    URLQueryItem(name: "api_key", value: api_key)
+            ]
         default:
-            return nil
+            return [URLQueryItem(name: "api_key", value: api_key)]
         }
     }
     
