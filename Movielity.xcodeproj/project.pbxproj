@@ -15,6 +15,11 @@
 		019E03C52CB52275008753E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 019E03C42CB52275008753E9 /* Base */; };
 		019E03CD2CB5228A008753E9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 019E03CC2CB5228A008753E9 /* .gitignore */; };
 		019E03D12CB52C72008753E9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03D02CB52C72008753E9 /* NetworkManager.swift */; };
+		019E03D62CB6602E008753E9 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03D52CB6602E008753E9 /* APIKey.swift */; };
+		019E03D82CB661D9008753E9 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03D72CB661D9008753E9 /* Router.swift */; };
+		019E03DA2CB669DF008753E9 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03D92CB669DF008753E9 /* TargetType.swift */; };
+		019E03DC2CB66A2C008753E9 /* APIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03DB2CB66A2C008753E9 /* APIUrl.swift */; };
+		019E03DE2CB672EA008753E9 /* HTTPHeaderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03DD2CB672EA008753E9 /* HTTPHeaderField.swift */; };
 		AA6522002CB5345800B56E01 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA6521FF2CB5345800B56E01 /* SnapKit */; };
 		AA6522062CB5352400B56E01 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA6522052CB5352400B56E01 /* RealmSwift */; };
 		AA6522072CB5353100B56E01 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA6522052CB5352400B56E01 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -49,6 +54,11 @@
 		019E03C62CB52275008753E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		019E03CC2CB5228A008753E9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		019E03D02CB52C72008753E9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		019E03D52CB6602E008753E9 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		019E03D72CB661D9008753E9 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		019E03D92CB669DF008753E9 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		019E03DB2CB66A2C008753E9 /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
+		019E03DD2CB672EA008753E9 /* HTTPHeaderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeaderField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +100,9 @@
 			children = (
 				019E03B82CB52274008753E9 /* AppDelegate.swift */,
 				019E03BA2CB52274008753E9 /* SceneDelegate.swift */,
-				019E03D02CB52C72008753E9 /* NetworkManager.swift */,
+				019E03DB2CB66A2C008753E9 /* APIUrl.swift */,
+				019E03D52CB6602E008753E9 /* APIKey.swift */,
+				019E03D42CB65AE6008753E9 /* Network */,
 				019E03BC2CB52274008753E9 /* ViewController.swift */,
 				019E03BE2CB52274008753E9 /* Main.storyboard */,
 				019E03C12CB52275008753E9 /* Assets.xcassets */,
@@ -98,6 +110,17 @@
 				019E03C62CB52275008753E9 /* Info.plist */,
 			);
 			path = Movielity;
+			sourceTree = "<group>";
+		};
+		019E03D42CB65AE6008753E9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				019E03D02CB52C72008753E9 /* NetworkManager.swift */,
+				019E03D72CB661D9008753E9 /* Router.swift */,
+				019E03D92CB669DF008753E9 /* TargetType.swift */,
+				019E03DD2CB672EA008753E9 /* HTTPHeaderField.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +215,11 @@
 				019E03BD2CB52274008753E9 /* ViewController.swift in Sources */,
 				019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */,
 				019E03BB2CB52274008753E9 /* SceneDelegate.swift in Sources */,
+				019E03DC2CB66A2C008753E9 /* APIUrl.swift in Sources */,
+				019E03D82CB661D9008753E9 /* Router.swift in Sources */,
+				019E03D62CB6602E008753E9 /* APIKey.swift in Sources */,
+				019E03DE2CB672EA008753E9 /* HTTPHeaderField.swift in Sources */,
+				019E03DA2CB669DF008753E9 /* TargetType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
