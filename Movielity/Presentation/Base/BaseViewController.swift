@@ -2,11 +2,10 @@
 //  BaseViewController.swift
 //  Movielity
 //
-//  Created by 이윤지 on 10/9/24.
+//  Created by 이윤지 on 10/10/24.
 //
 
 import UIKit
-import SnapKit
 
 class BaseViewController<RootView: UIView>: UIViewController {
     
@@ -26,12 +25,16 @@ class BaseViewController<RootView: UIView>: UIViewController {
     }
     
     func setupSubviews() { }
+    
     func setupLayout() { }
+    
     func setupUI() {
         navigationItem.backButtonTitle = ""
         view.backgroundColor = .white
     }
+    
     func setupAddTarget() { }
-    func setupNavigationBar() { }
+    
+    func setupNavigationBar() {
+    }
 }
-

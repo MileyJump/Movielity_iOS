@@ -2,7 +2,7 @@
 //  BaseView.swift
 //  Movielity
 //
-//  Created by 이윤지 on 10/9/24.
+//  Created by 이윤지 on 10/10/24.
 //
 
 import UIKit
