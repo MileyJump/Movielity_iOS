@@ -2,7 +2,7 @@
 //  CustomAppColors.swift
 //  Movielity
 //
-//  Created by 최민경 on 10/10/24.
+//  Created by 이윤지 on 10/9/24.
 //
 
 import UIKit
@@ -27,5 +27,3 @@ enum CustomAppColors {
         }
     }
 }
-
-

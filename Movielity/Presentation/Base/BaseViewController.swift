@@ -2,9 +2,8 @@
 //  BaseViewController.swift
 //  Movielity
 //
-//  Created by 최민경 on 10/10/24.
+//  Created by 이윤지 on 10/10/24.
 //
-
 
 import UIKit
 
@@ -39,5 +38,3 @@ class BaseViewController<RootView: UIView>: UIViewController {
     func setupNavigationBar() {
     }
 }
-
-

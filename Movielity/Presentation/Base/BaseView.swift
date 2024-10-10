@@ -1,17 +1,16 @@
 //
-//  BaseTableViewCell.swift
+//  BaseView.swift
 //  Movielity
 //
-//  Created by 최민경 on 10/10/24.
+//  Created by 이윤지 on 10/10/24.
 //
-
 
 import UIKit
 
-class BaseTableViewCell: UITableViewCell {
+class BaseView: UIView {
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupSubviews()
         setupLayout()
         setupUI()
@@ -26,7 +25,7 @@ class BaseTableViewCell: UITableViewCell {
     
     func setupLayout() { }
     
-    func setupUI() { }
-    
+    func setupUI() {
+        backgroundColor = .white
+    }
 }
-

@@ -1,16 +1,16 @@
 //
-//  BaseCollectionViewCell.swift
+//  BaseTableViewCell.swift
 //  Movielity
 //
-//  Created by 최민경 on 10/10/24.
+//  Created by 이윤지 on 10/10/24.
 //
 
 import UIKit
 
-class BaseCollectionViewCell: UICollectionViewCell {
+class BaseTableViewCell: UITableViewCell {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
         setupLayout()
         setupUI()
@@ -21,13 +21,10 @@ class BaseCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func setupSubviews() { }
     
     func setupLayout() { }
     
     func setupUI() { }
     
-    
 }
-

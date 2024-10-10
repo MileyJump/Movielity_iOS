@@ -11,17 +11,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
         
-        window = UIWindow(windowScene: windowScene)
-        
-     
+        // UINavigationController로 SearchViewController를 감싸서 설정
         let navigationController = UINavigationController(rootViewController: HomeViewController())
-        window?.rootViewController = navigationController
+        window.rootViewController = navigationController
         
-        window?.makeKeyAndVisible()
+        window.makeKeyAndVisible()
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

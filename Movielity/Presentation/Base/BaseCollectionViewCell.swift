@@ -1,13 +1,13 @@
 //
-//  BaseView.swift
+//  BaseCollectionViewCell.swift
 //  Movielity
 //
-//  Created by 최민경 on 10/10/24.
+//  Created by 이윤지 on 10/10/24.
 //
 
 import UIKit
 
-class BaseView: UIView {
+class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,12 +21,12 @@ class BaseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func setupSubviews() { }
     
     func setupLayout() { }
     
-    func setupUI() {
-        backgroundColor = .white
-    }
+    func setupUI() { }
+    
+    
 }
-
