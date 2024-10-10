@@ -1,8 +1,8 @@
 //
-//  NetworkManager.swift
+//  TrendingNetworkManager.swift
 //  Movielity
 //
-//  Created by 강석호 on 10/8/24.
+//  Created by 강석호 on 10/10/24.
 //
 
 import Foundation
@@ -10,19 +10,18 @@ import Foundation
 import Alamofire
 import RxSwift
 
-final class NetworkManager {
-    
-    static let shared = NetworkManager()
+final class TrendingNetworkManager {
+    static let shared = TrendingNetworkManager()
     
     private init() { }
     
-    func searchMovie(query: String) -> Observable<Search> {
+    func trendingMovies() -> Observable<TrendingMovie> {
         return Observable.create { observer in
             do {
-                let request = try Router.searchMovie(query: query).asURLRequest()
+                let request = try Router.trendingMovies.asURLRequest()
                 
                 AF.request(request)
-                    .responseDecodable(of: Search.self) { response in
+                    .responseDecodable(of: TrendingMovie.self) { response in
                         switch response.result {
                         case .success(let success):
                             print(success)
@@ -40,13 +39,13 @@ final class NetworkManager {
         }
     }
     
-    func searchSeries(query: String) -> Observable<Search> {
+    func trendingSeries() -> Observable<TrendingSeries> {
         return Observable.create { observer in
             do {
-                let request = try Router.searchSeries(query: query).asURLRequest()
+                let request = try Router.trendingSeries.asURLRequest()
                 
                 AF.request(request)
-                    .responseDecodable(of: Search.self) { response in
+                    .responseDecodable(of: TrendingSeries.self) { response in
                         switch response.result {
                         case .success(let success):
                             print(success)
