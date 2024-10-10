@@ -420,7 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6522EF2CB6900800B56E01 /* DummyMovieDTO.swift in Sources */,
-				019E03D12CB52C72008753E9 /* SearchNetworkManager.swift in Sources */,
 				B037EBC42CB7F8EE00229EAE /* MovielityTabBarController.swift in Sources */,
 				AA65232C2CB7E43400B56E01 /* BaseViewController.swift in Sources */,
 				AA6522DF2CB68ECE00B56E01 /* SearchResultsViewController.swift in Sources */,
@@ -430,9 +429,7 @@
 				AA6522F62CB79C4800B56E01 /* SearchViewModel.swift in Sources */,
 				AA6522DC2CB68DF400B56E01 /* SearchViewController.swift in Sources */,
 				AA6522DA2CB68DE400B56E01 /* SearchView.swift in Sources */,
-				019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */,
 				AA6522E12CB68F2500B56E01 /* SearchResultsView.swift in Sources */,
-				019E03BB2CB52274008753E9 /* SceneDelegate.swift in Sources */,
 				AA65232F2CB7E45400B56E01 /* BaseTableViewCell.swift in Sources */,
 				AA6522E62CB68F8E00B56E01 /* ResultItemCollectionViewCell.swift in Sources */,
 				B037EBB42CB7BA9200229EAE /* HomePosterTableViewCell.swift in Sources */,
