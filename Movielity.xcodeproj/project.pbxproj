@@ -40,6 +40,8 @@
 		B037EBB62CB7BA9E00229EAE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB52CB7BA9E00229EAE /* HomeView.swift */; };
 		B037EBB82CB7BABC00229EAE /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB72CB7BABC00229EAE /* ReusableProtocol.swift */; };
 		B037EBBA2CB7BADD00229EAE /* CustomAppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB92CB7BADD00229EAE /* CustomAppColors.swift */; };
+		B037EBC02CB7CB6800229EAE /* APIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBBF2CB7CB6800229EAE /* APIUrl.swift */; };
+		B037EBC22CB7CB9300229EAE /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBC12CB7CB9300229EAE /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -85,6 +87,8 @@
 		B037EBB52CB7BA9E00229EAE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B037EBB72CB7BABC00229EAE /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		B037EBB92CB7BADD00229EAE /* CustomAppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppColors.swift; sourceTree = "<group>"; };
+		B037EBBF2CB7CB6800229EAE /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
+		B037EBC12CB7CB9300229EAE /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,8 @@
 				B037EBB52CB7BA9E00229EAE /* HomeView.swift */,
 				B037EBB72CB7BABC00229EAE /* ReusableProtocol.swift */,
 				B037EBB92CB7BADD00229EAE /* CustomAppColors.swift */,
+				B037EBBF2CB7CB6800229EAE /* APIUrl.swift */,
+				B037EBC12CB7CB9300229EAE /* APIKey.swift */,
 				019E03D42CB65AE6008753E9 /* Network */,
 				019E03BE2CB52274008753E9 /* Main.storyboard */,
 				019E03C12CB52275008753E9 /* Assets.xcassets */,
@@ -292,9 +298,11 @@
 				019E03EB2CB75C8E008753E9 /* TrendingMovie.swift in Sources */,
 				019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */,
 				B037EBB02CB7BA6C00229EAE /* HomeTableViewCell.swift in Sources */,
+				B037EBC22CB7CB9300229EAE /* APIKey.swift in Sources */,
 				B037EBAE2CB7BA5F00229EAE /* HomeCollectionViewCell.swift in Sources */,
 				B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */,
 				B037EBA72CB7BA1D00229EAE /* BaseTableViewCell.swift in Sources */,
+				B037EBC02CB7CB6800229EAE /* APIUrl.swift in Sources */,
 				019E03BB2CB52274008753E9 /* SceneDelegate.swift in Sources */,
 				B037EBBA2CB7BADD00229EAE /* CustomAppColors.swift in Sources */,
 				B037EBA52CB7BA0F00229EAE /* BaseViewController.swift in Sources */,
