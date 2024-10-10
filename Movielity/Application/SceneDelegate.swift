@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         // UINavigationController로 SearchViewController를 감싸서 설정
-        let navigationController = UINavigationController(rootViewController: HomeViewController())
-        window.rootViewController = navigationController
+        let vc = MovielityTabBarController()
+        window.rootViewController = vc
         
         window.makeKeyAndVisible()
         self.window = window

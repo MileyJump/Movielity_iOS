@@ -49,6 +49,11 @@
 		B037EBB82CB7BABC00229EAE /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB72CB7BABC00229EAE /* ReusableProtocol.swift */; };
 		B037EBC02CB7CB6800229EAE /* APIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBBF2CB7CB6800229EAE /* APIUrl.swift */; };
 		B037EBC22CB7CB9300229EAE /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBC12CB7CB9300229EAE /* APIKey.swift */; };
+		B037EBC42CB7F8EE00229EAE /* MovielityTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBC32CB7F8EE00229EAE /* MovielityTabBarController.swift */; };
+		B037EBC62CB7F90200229EAE /* MovielityTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBC52CB7F90200229EAE /* MovielityTabBar.swift */; };
+		B037EBC82CB7FA3300229EAE /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBC72CB7FA3300229EAE /* StringLiterals.swift */; };
+		B037EBCB2CB7FE2500229EAE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBCA2CB7FE2500229EAE /* DownloadViewController.swift */; };
+		B037EBCD2CB7FE5500229EAE /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBCC2CB7FE5500229EAE /* DownloadView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +108,11 @@
 		B037EBB72CB7BABC00229EAE /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		B037EBBF2CB7CB6800229EAE /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
 		B037EBC12CB7CB9300229EAE /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		B037EBC32CB7F8EE00229EAE /* MovielityTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovielityTabBarController.swift; sourceTree = "<group>"; };
+		B037EBC52CB7F90200229EAE /* MovielityTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovielityTabBar.swift; sourceTree = "<group>"; };
+		B037EBC72CB7FA3300229EAE /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
+		B037EBCA2CB7FE2500229EAE /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
+		B037EBCC2CB7FE5500229EAE /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +208,8 @@
 				AA6523172CB7DD5100B56E01 /* Home */,
 				AA6523162CB7DD1800B56E01 /* SearchResults */,
 				AA6523152CB7DD1500B56E01 /* Search */,
+				B037EBC92CB7FDFD00229EAE /* Download */,
+				B037EBCE2CB7FF3000229EAE /* TabBar */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -209,6 +221,7 @@
 				AA6522E82CB68FB300B56E01 /* CustomAppColors.swift */,
 				B037EBBF2CB7CB6800229EAE /* APIUrl.swift */,
 				B037EBC12CB7CB9300229EAE /* APIKey.swift */,
+				B037EBC72CB7FA3300229EAE /* StringLiterals.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -301,6 +314,24 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		B037EBC92CB7FDFD00229EAE /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				B037EBCA2CB7FE2500229EAE /* DownloadViewController.swift */,
+				B037EBCC2CB7FE5500229EAE /* DownloadView.swift */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		B037EBCE2CB7FF3000229EAE /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B037EBC32CB7F8EE00229EAE /* MovielityTabBarController.swift */,
+				B037EBC52CB7F90200229EAE /* MovielityTabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -390,10 +421,12 @@
 			files = (
 				AA6522EF2CB6900800B56E01 /* DummyMovieDTO.swift in Sources */,
 				019E03D12CB52C72008753E9 /* SearchNetworkManager.swift in Sources */,
+				B037EBC42CB7F8EE00229EAE /* MovielityTabBarController.swift in Sources */,
 				AA65232C2CB7E43400B56E01 /* BaseViewController.swift in Sources */,
 				AA6522DF2CB68ECE00B56E01 /* SearchResultsViewController.swift in Sources */,
 				AA6522E42CB68F7500B56E01 /* MovieLikedTableViewCell.swift in Sources */,
 				AA6522E92CB68FB300B56E01 /* CustomAppColors.swift in Sources */,
+				B037EBCB2CB7FE2500229EAE /* DownloadViewController.swift in Sources */,
 				AA6522F62CB79C4800B56E01 /* SearchViewModel.swift in Sources */,
 				AA6522DC2CB68DF400B56E01 /* SearchViewController.swift in Sources */,
 				AA6522DA2CB68DE400B56E01 /* SearchView.swift in Sources */,
@@ -406,15 +439,18 @@
 				AA6523312CB7E46600B56E01 /* BaseCollectionViewCell.swift in Sources */,
 				B037EBB62CB7BA9E00229EAE /* HomeView.swift in Sources */,
 				B037EBB82CB7BABC00229EAE /* ReusableProtocol.swift in Sources */,
+				B037EBC62CB7F90200229EAE /* MovielityTabBar.swift in Sources */,
 				B037EBB22CB7BA8000229EAE /* UICollectionViewLayout +.swift in Sources */,
 				019E03D12CB52C72008753E9 /* SearchNetworkManager.swift in Sources */,
 				019E03EB2CB75C8E008753E9 /* TrendingMovie.swift in Sources */,
+				B037EBCD2CB7FE5500229EAE /* DownloadView.swift in Sources */,
 				019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */,
 				B037EBB02CB7BA6C00229EAE /* HomeTableViewCell.swift in Sources */,
 				B037EBC22CB7CB9300229EAE /* APIKey.swift in Sources */,
 				B037EBAE2CB7BA5F00229EAE /* HomeCollectionViewCell.swift in Sources */,
 				B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */,
 				B037EBC02CB7CB6800229EAE /* APIUrl.swift in Sources */,
+				B037EBC82CB7FA3300229EAE /* StringLiterals.swift in Sources */,
 				019E03BB2CB52274008753E9 /* SceneDelegate.swift in Sources */,
 				019E03EF2CB79272008753E9 /* TrendingSeries.swift in Sources */,
 				019E03D82CB661D9008753E9 /* Router.swift in Sources */,
