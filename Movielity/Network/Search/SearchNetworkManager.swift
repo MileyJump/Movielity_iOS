@@ -11,7 +11,6 @@ import Alamofire
 import RxSwift
 
 final class SearchNetworkManager {
-    
     static let shared = SearchNetworkManager()
     
     private init() { }
