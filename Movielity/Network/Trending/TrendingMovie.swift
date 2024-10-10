@@ -1,5 +1,5 @@
 //
-//  Trending.swift
+//  TrendingMovie.swift
 //  Movielity
 //
 //  Created by 강석호 on 10/10/24.
