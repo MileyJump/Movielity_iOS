@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct TrendingMovie: Decodable {
-    let results: [DummyTrendingMovieResponse]
-}
+//struct TrendingMovie: Decodable {
+//    let results: [DummyTrendingMovieResponse]
+//}
 
 // 영화 정보를 담는 데이터 모델 (더미 데이터를 사용하여 테스트할 때 사용)
 struct DummyTrendingMovieResponse: Decodable {

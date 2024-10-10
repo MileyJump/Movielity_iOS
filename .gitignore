@@ -2,8 +2,6 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=swift
 
 .DS_Store
-APIUrl.swift
-APIKey.swift
 
 ### Swift ###
 # Xcode

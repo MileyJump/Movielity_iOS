@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         // UINavigationController로 SearchViewController를 감싸서 설정
-        let navigationController = UINavigationController(rootViewController: SearchViewController())
+        let navigationController = UINavigationController(rootViewController: HomeViewController())
         window.rootViewController = navigationController
         
         window.makeKeyAndVisible()
