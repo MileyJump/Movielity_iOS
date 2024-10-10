@@ -25,11 +25,9 @@ final class SearchNetworkManager {
                     .responseDecodable(of: Search.self) { response in
                         switch response.result {
                         case .success(let success):
-                            print(success)
                             observer.onNext(success)
                             observer.onCompleted()
                         case .failure(let failure):
-                            print(failure)
                             observer.onError(failure)
                         }
                     }
@@ -49,11 +47,9 @@ final class SearchNetworkManager {
                     .responseDecodable(of: Search.self) { response in
                         switch response.result {
                         case .success(let success):
-                            print(success)
                             observer.onNext(success)
                             observer.onCompleted()
                         case .failure(let failure):
-                            print(failure)
                             observer.onError(failure)
                         }
                     }
