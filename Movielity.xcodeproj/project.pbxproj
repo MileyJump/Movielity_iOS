@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03B82CB52274008753E9 /* AppDelegate.swift */; };
 		019E03BB2CB52274008753E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03BA2CB52274008753E9 /* SceneDelegate.swift */; };
-		019E03BD2CB52274008753E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E03BC2CB52274008753E9 /* ViewController.swift */; };
 		019E03C02CB52274008753E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 019E03BF2CB52274008753E9 /* Base */; };
 		019E03C22CB52275008753E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 019E03C12CB52275008753E9 /* Assets.xcassets */; };
 		019E03C52CB52275008753E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 019E03C42CB52275008753E9 /* Base */; };
@@ -51,7 +50,6 @@
 		019E03B52CB52274008753E9 /* Movielity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movielity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		019E03B82CB52274008753E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		019E03BA2CB52274008753E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		019E03BC2CB52274008753E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		019E03BF2CB52274008753E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		019E03C12CB52275008753E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		019E03C42CB52275008753E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				019E03DB2CB66A2C008753E9 /* APIUrl.swift */,
 				019E03D52CB6602E008753E9 /* APIKey.swift */,
 				019E03D42CB65AE6008753E9 /* Network */,
-				019E03BC2CB52274008753E9 /* ViewController.swift */,
 				019E03BE2CB52274008753E9 /* Main.storyboard */,
 				019E03C12CB52275008753E9 /* Assets.xcassets */,
 				019E03C32CB52275008753E9 /* LaunchScreen.storyboard */,
@@ -248,7 +245,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				019E03D12CB52C72008753E9 /* SearchNetworkManager.swift in Sources */,
-				019E03BD2CB52274008753E9 /* ViewController.swift in Sources */,
 				019E03EB2CB75C8E008753E9 /* TrendingMovie.swift in Sources */,
 				019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */,
 				019E03BB2CB52274008753E9 /* SceneDelegate.swift in Sources */,
