@@ -14,7 +14,6 @@ final class SearchViewController: BaseViewController<SearchView> {
 
     let trendingViewModel = TrendingViewModel()
     private var results: [TrendingMovieResponse] = []
-    private let disposeBag = DisposeBag()
     
     private let searchController: UISearchController = {
         let search = UISearchController(searchResultsController: SearchResultsViewController())
