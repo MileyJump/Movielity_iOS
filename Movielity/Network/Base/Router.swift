@@ -13,7 +13,7 @@ enum Router {
     case searchSeries(query: String)
     case trendingMovies
     case trendingSeries
-    case similarMovies(movie_id: String)
+    case similarMovies(movie_id: Int)
     case similarSeries(series_id: String)
     case castMovie(movie_id: String)
     case castSeries(series_id: String)
