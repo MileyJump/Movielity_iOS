@@ -15,6 +15,10 @@ final class SearchViewController: BaseViewController<SearchView> {
     let trendingViewModel = TrendingViewModel()
     private var results: [TrendingMovieResponse] = []
     
+    
+    let searchViewModel = SearcViewModel()
+    private var searchResults: [SearchResponse] = []
+    
     private let searchController: UISearchController = {
         let search = UISearchController(searchResultsController: SearchResultsViewController())
         search.searchBar.placeholder = "게임, 시리즈, 영화를 검색하세요..."
@@ -30,6 +34,8 @@ final class SearchViewController: BaseViewController<SearchView> {
         title = "검색"
         setupDelegates()
         setupNavigationItems()
+        
+        setupSearchBarBinding()
         
         bindViewModel()
         trendingViewModel.fetchTrendingMovies()
@@ -62,6 +68,23 @@ final class SearchViewController: BaseViewController<SearchView> {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationItem.hidesSearchBarWhenScrolling = false
     }
+    
+    
+    private func setupSearchBarBinding() {
+           searchViewModel.searchMoviesSubject
+               .observe(on: MainScheduler.instance)
+               .subscribe(onNext: { [weak self] movies in
+                   self?.searchResults = movies
+                   let resultsVC = self?.searchController.searchResultsController as? SearchResultsViewController
+                   resultsVC?.movie = movies
+                   resultsVC?.rootView.searchResultsCollectionView.reloadData()
+               }, onError: { error in
+                   print("검색 결과 오류: \(error)")
+               })
+               .disposed(by: disposeBag)
+       }
+    
+    
 }
 
 
@@ -105,15 +128,10 @@ extension SearchViewController: UISearchResultsUpdating {
             return
         }
         
-        let filteredMovieTitle = results.filter { $0.title?.lowercased().contains(inputSearchText.lowercased()) == true }
-        
-        let resultsVC = searchController.searchResultsController as? SearchResultsViewController
-        resultsVC?.DummyMovieTitle = filteredMovieTitle
-        resultsVC?.rootView.searchResultsCollectionView.reloadData()
-        
-        
-        
+        // SearcViewModel을 사용해 검색 실행
+        searchViewModel.fetchSearchMovie(query: inputSearchText)
     }
 }
+
 
 

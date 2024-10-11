@@ -38,3 +38,36 @@ class TrendingViewModel {
     }
 }
 
+
+
+import Foundation
+import RxSwift
+
+class SearcViewModel {
+    private let disposeBag = DisposeBag()
+    
+    let searchMoviesSubject = PublishSubject<[SearchResponse]>()
+    let searchSeriesSubject = PublishSubject<[SearchResponse]>()
+    
+    func fetchSearchMovie(query: String) {
+        SearchNetworkManager.shared.searchMovie(query: query)
+            .map { $0.results }
+            .subscribe(onNext: { [weak self] movies in
+                self?.searchMoviesSubject.onNext(movies)
+            }, onError: { error in
+                
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func fetchSearchSeries(query: String) {
+        SearchNetworkManager.shared.searchSeries(query: query)
+            .map { $0.results }
+            .subscribe(onNext: { [weak self] series in
+                self?.searchSeriesSubject.onNext(series)
+            }, onError: { error in
+                
+            })
+            .disposed(by: disposeBag)
+    }
+}

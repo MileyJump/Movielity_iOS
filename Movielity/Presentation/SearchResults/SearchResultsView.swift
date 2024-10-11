@@ -12,7 +12,7 @@ final class SearchResultsView: BaseView {
     
     let searchResultsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 10, height: 200)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 15, height: 170)
         layout.minimumInteritemSpacing = 0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)

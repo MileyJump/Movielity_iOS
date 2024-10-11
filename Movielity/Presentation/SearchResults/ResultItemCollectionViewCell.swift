@@ -7,6 +7,7 @@
 
 import UIKit
 import Then
+import Kingfisher
 
 final class ResultItemCollectionViewCell: BaseCollectionViewCell {
     
@@ -30,8 +31,13 @@ final class ResultItemCollectionViewCell: BaseCollectionViewCell {
         posterImageView.frame = contentView.bounds
     }
     
-    func configure(with movie: TrendingMovieResponse) {
-        posterImageView.image = UIImage(systemName: "film")
+    
+    func configure(with model: String) {
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w500/\(model)") else {
+            return
+        }
+        
+        posterImageView.kf.setImage(with: url)
     }
 }
 
