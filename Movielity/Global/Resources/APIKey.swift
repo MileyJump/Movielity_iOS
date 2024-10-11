@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//"여러분들의 키를 넣어주세요><"
+
 struct APIKey {
     static let tmdbKey = "여러분들의 키를 넣어주세요><"
 }

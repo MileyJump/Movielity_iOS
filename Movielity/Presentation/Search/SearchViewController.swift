@@ -70,28 +70,40 @@ final class SearchViewController: BaseViewController<SearchView> {
     }
 
     private func setupSearchBarBinding() {
-        searchResultViewModel.searchMoviesSubject
-            .observe(on: MainScheduler.instance)
-            .subscribe(with: self, onNext: { owner, movies in
-                owner.searchResults = movies
-                let resultsVC = owner.searchController.searchResultsController as? SearchResultsViewController
-                resultsVC?.movie = movies
-                resultsVC?.rootView.searchResultsCollectionView.reloadData()
-            }, onError: { error, _  in
-                print("검색 결과 오류: \(error)")
-            })
-            .disposed(by: disposeBag)
-    }
+          let searchInput = searchController.searchBar.rx.text.orEmpty.asObservable()
+          
+          let input = SearchResultsViewModel.Input(fetchMoviesTrigger: searchInput)
+          let output = searchResultViewModel.transform(input: input)
+          
+          output.searchMovies
+              .drive(with: self) { owner, movies in
+                  owner.searchResults = movies
+                  let resultsVC = owner.searchController.searchResultsController as? SearchResultsViewController
+                  resultsVC?.movie = movies
+                  resultsVC?.rootView.searchResultsCollectionView.reloadData()
+              }
+              .disposed(by: disposeBag)
+      }
 }
 
 // 검색 결과 업데이트
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let inputSearchText = searchController.searchBar.text, !inputSearchText.trimmingCharacters(in: .whitespaces).isEmpty else {
-            return
-        }
+        guard let inputSearchText = searchController.searchBar.text else { return }
         
-        searchResultViewModel.fetchSearchMovie(query: inputSearchText)
+        let searchInput = Observable.just(inputSearchText)
+        
+        let input = SearchResultsViewModel.Input(fetchMoviesTrigger: searchInput)
+        let output = searchResultViewModel.transform(input: input)
+        
+        output.searchMovies
+            .drive(with: self) { owner, movies in
+                owner.searchResults = movies
+                let resultsVC = owner.searchController.searchResultsController as? SearchResultsViewController
+                resultsVC?.movie = movies
+                resultsVC?.rootView.searchResultsCollectionView.reloadData()
+            }
+            .disposed(by: disposeBag)
     }
 }
 

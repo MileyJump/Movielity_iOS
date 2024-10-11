@@ -37,33 +37,31 @@ class TrendingViewModel: ViewModelType {
 
 
 import Foundation
+
 import RxSwift
+import RxCocoa
 
-class SearchResultsViewModel {
+class SearchResultsViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    
-    let searchMoviesSubject = PublishSubject<[SearchResponse]>()
-    let searchSeriesSubject = PublishSubject<[SearchResponse]>()
-    
-    func fetchSearchMovie(query: String) {
-        SearchNetworkManager.shared.searchMovie(query: query)
-            .map { $0.results }
-            .subscribe(onNext: { [weak self] movies in
-                self?.searchMoviesSubject.onNext(movies)
-            }, onError: { error in
-                
-            })
-            .disposed(by: disposeBag)
-    }
 
-    func fetchSearchSeries(query: String) {
-        SearchNetworkManager.shared.searchSeries(query: query)
-            .map { $0.results }
-            .subscribe(onNext: { [weak self] series in
-                self?.searchSeriesSubject.onNext(series)
-            }, onError: { error in
-                
-            })
-            .disposed(by: disposeBag)
+    struct Input {
+        let fetchMoviesTrigger: Observable<String>
+    }
+    
+    struct Output {
+        let searchMovies: Driver<[SearchResponse]>
+    }
+    
+    func transform(input: Input) -> Output {
+        let searchMovies = input.fetchMoviesTrigger
+            .filter { !$0.isEmpty }
+            .flatMapLatest { query -> Observable<[SearchResponse]> in
+                return SearchNetworkManager.shared.searchMovie(query: query)
+                    .map { $0.results }
+                    .catchAndReturn([])
+            }
+            .asDriver(onErrorJustReturn: [])
+        
+        return Output(searchMovies: searchMovies)
     }
 }
