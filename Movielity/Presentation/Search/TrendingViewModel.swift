@@ -6,35 +6,31 @@
 //
 
 import Foundation
-import RxSwift
+
 import RxCocoa
 
-class TrendingViewModel {
+class TrendingViewModel: ViewModelType {
+    
+    struct Input {
+        let fetchMoviesTrigger: Observable<Void>
+    }
+    
+    struct Output {
+        let trendingMovies: Driver<[TrendingMovieResponse]>
+    }
+    
     private let disposeBag = DisposeBag()
     
-    let trendingMoviesSubject = PublishSubject<[TrendingMovieResponse]>()
-    
-    func fetchTrendingMovies() {
-        TrendingNetworkManager.shared.trendingMovies()
-            .map { $0.results }
-            .subscribe(onNext: { [weak self] movies in
-                self?.trendingMoviesSubject.onNext(movies)
-            }, onError: { error in
-              //  print("트렌딩무비\(error)")
-            })
-            .disposed(by: disposeBag)
-    }
-
-    func fetchTrendingSeries() {
-        TrendingNetworkManager.shared.trendingSeries()
-            .subscribe(onNext: { trendingSeries in
-             //   print("\(trendingSeries)")
-            }, onError: { error in
-                //  print("트렌딩시리즈\(error)")
-            }, onCompleted: {
-              //  print("트렌딩시리즈 완료.")
-            })
-            .disposed(by: disposeBag)
+    func transform(input: Input) -> Output {
+        let trendingMovies = input.fetchMoviesTrigger
+            .flatMapLatest { _ -> Observable<[TrendingMovieResponse]> in
+                TrendingNetworkManager.shared.trendingMovies()
+                    .map { $0.results }
+                    .catchAndReturn([])
+            }
+            .asDriver(onErrorJustReturn: [])
+        
+        return Output(trendingMovies: trendingMovies)
     }
 }
 
@@ -43,7 +39,7 @@ class TrendingViewModel {
 import Foundation
 import RxSwift
 
-class SearcViewModel {
+class SearchResultsViewModel {
     private let disposeBag = DisposeBag()
     
     let searchMoviesSubject = PublishSubject<[SearchResponse]>()
