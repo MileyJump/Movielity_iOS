@@ -30,7 +30,7 @@ final class ResultItemCollectionViewCell: BaseCollectionViewCell {
         posterImageView.frame = contentView.bounds
     }
     
-    func configure(with movie: DummyTrendingMovieResponse) {
+    func configure(with movie: TrendingMovieResponse) {
         posterImageView.image = UIImage(systemName: "film")
     }
 }

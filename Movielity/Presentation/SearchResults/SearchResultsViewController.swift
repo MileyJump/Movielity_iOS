@@ -10,7 +10,7 @@ import SnapKit
 
 final class SearchResultsViewController: BaseViewController<SearchResultsView> {
     
-    var DummyMovieTitle: [DummyTrendingMovieResponse] = [] // 더미 데이터들
+    var DummyMovieTitle: [TrendingMovieResponse] = [] // 더미 데이터들
    
     //사진 탭했을 때 미디어상세 화면으로 이동할 때 사용하시면 되는 프로토콜 입니다.
     //weak var delegate: ResultItemViewControllerDelegate?
