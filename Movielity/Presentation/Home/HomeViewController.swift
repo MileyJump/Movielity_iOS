@@ -17,14 +17,14 @@ class HomeViewController: BaseViewController<HomeView> {
     override func setupUI() {
         rootView.backgroundColor = CustomAppColors.backgroundBlack.color
         
-        rootView.posterTableView.dataSource = self
-        rootView.posterTableView.delegate = self
+        rootView.nowHotMovieCollectionView.dataSource = self
+        rootView.nowHotMovieCollectionView.delegate = self
         
-        rootView.posterTableView.rowHeight = UITableView.automaticDimension
-        rootView.posterTableView.estimatedRowHeight = 450
+        rootView.nowHotSeriesCollectionView.dataSource = self
+        rootView.nowHotSeriesCollectionView.delegate = self
         
-        rootView.posterTableView.register(HomePosterTableViewCell.self, forCellReuseIdentifier: HomePosterTableViewCell.identifier)
-        rootView.posterTableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
+        rootView.nowHotMovieCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        rootView.nowHotSeriesCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
     }
     
     override func setupNavigationBar() {
@@ -50,46 +50,10 @@ class HomeViewController: BaseViewController<HomeView> {
     
 }
 
-
-
-
-
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomePosterTableViewCell.identifier, for: indexPath) as? HomePosterTableViewCell else { return UITableViewCell() }
-            
-            return cell
-        } else {
-            // 나머지 셀에서는 HomeTableViewCell 사용
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
-            
-            cell.collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
-            
-            cell.selectionStyle = .none
-            
-            cell.collectionView.tag = indexPath.row
-            cell.collectionView.delegate = self
-            cell.collectionView.dataSource = self
-            
-            cell.collectionView.isPagingEnabled = true
-            
-            return cell
-        }
-    }
-}
-
-
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if collectionView.tag == 1 {
-            return 2
+        if collectionView == rootView.nowHotMovieCollectionView {
+            return 20
         } else {
             return 10
         }

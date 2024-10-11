@@ -42,9 +42,7 @@
 		AA6523312CB7E46600B56E01 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */; };
 		B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */; };
 		B037EBAE2CB7BA5F00229EAE /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */; };
-		B037EBB02CB7BA6C00229EAE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAF2CB7BA6C00229EAE /* HomeTableViewCell.swift */; };
 		B037EBB22CB7BA8000229EAE /* UICollectionViewLayout +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB12CB7BA8000229EAE /* UICollectionViewLayout +.swift */; };
-		B037EBB42CB7BA9200229EAE /* HomePosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB32CB7BA9200229EAE /* HomePosterTableViewCell.swift */; };
 		B037EBB62CB7BA9E00229EAE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB52CB7BA9E00229EAE /* HomeView.swift */; };
 		B037EBB82CB7BABC00229EAE /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB72CB7BABC00229EAE /* ReusableProtocol.swift */; };
 		B037EBC02CB7CB6800229EAE /* APIUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBBF2CB7CB6800229EAE /* APIUrl.swift */; };
@@ -101,9 +99,7 @@
 		AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		B037EBAF2CB7BA6C00229EAE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B037EBB12CB7BA8000229EAE /* UICollectionViewLayout +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout +.swift"; sourceTree = "<group>"; };
-		B037EBB32CB7BA9200229EAE /* HomePosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePosterTableViewCell.swift; sourceTree = "<group>"; };
 		B037EBB52CB7BA9E00229EAE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B037EBB72CB7BABC00229EAE /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		B037EBBF2CB7CB6800229EAE /* APIUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrl.swift; sourceTree = "<group>"; };
@@ -269,8 +265,6 @@
 				B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */,
 				B037EBB52CB7BA9E00229EAE /* HomeView.swift */,
 				B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */,
-				B037EBAF2CB7BA6C00229EAE /* HomeTableViewCell.swift */,
-				B037EBB32CB7BA9200229EAE /* HomePosterTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -432,7 +426,6 @@
 				AA6522E12CB68F2500B56E01 /* SearchResultsView.swift in Sources */,
 				AA65232F2CB7E45400B56E01 /* BaseTableViewCell.swift in Sources */,
 				AA6522E62CB68F8E00B56E01 /* ResultItemCollectionViewCell.swift in Sources */,
-				B037EBB42CB7BA9200229EAE /* HomePosterTableViewCell.swift in Sources */,
 				AA6523312CB7E46600B56E01 /* BaseCollectionViewCell.swift in Sources */,
 				B037EBB62CB7BA9E00229EAE /* HomeView.swift in Sources */,
 				B037EBB82CB7BABC00229EAE /* ReusableProtocol.swift in Sources */,
@@ -442,7 +435,6 @@
 				019E03EB2CB75C8E008753E9 /* TrendingMovie.swift in Sources */,
 				B037EBCD2CB7FE5500229EAE /* DownloadView.swift in Sources */,
 				019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */,
-				B037EBB02CB7BA6C00229EAE /* HomeTableViewCell.swift in Sources */,
 				B037EBC22CB7CB9300229EAE /* APIKey.swift in Sources */,
 				B037EBAE2CB7BA5F00229EAE /* HomeCollectionViewCell.swift in Sources */,
 				B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */,
