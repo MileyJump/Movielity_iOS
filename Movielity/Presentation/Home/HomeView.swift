@@ -21,9 +21,8 @@ final class HomeView: BaseView {
     }
     
     let posterImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "star")
-        $0.backgroundColor = .blue
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = 10
+        $0.clipsToBounds = true
     }
     
     let taglabel = UILabel().then {
@@ -33,29 +32,21 @@ final class HomeView: BaseView {
         $0.font = .systemFont(ofSize: 15)
     }
     
-    let playButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        $0.setTitle("재생", for: .normal)
-        $0.setTitleColor(CustomAppColors.backgroundBlack.color, for: .normal)
-        $0.backgroundColor = CustomAppColors.white.color
-        $0.tintColor = CustomAppColors.backgroundBlack.color
-        $0.titleLabel?.font = .systemFont(ofSize: 14)
-        $0.layer.cornerRadius = 8
-    }
+    private let playButton = CustomButton(image: UIImage(systemName: "play.fill"),
+                                          title: "재생",
+                                          backgroundColor: CustomAppColors.white.color,
+                                          tintColor: CustomAppColors.backgroundBlack.color)
     
-    let likedListButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "plus"), for: .normal)
-        $0.setTitle("내가 찜한 리스트", for: .normal)
-        $0.backgroundColor = .darkGray
-        $0.tintColor = CustomAppColors.white.color
-        $0.titleLabel?.font = .systemFont(ofSize: 14)
-        $0.layer.cornerRadius = 8
-    }
+    
+    private let likedListButton = CustomButton(image: UIImage(systemName: "plus"),
+                                               title: "내가 찜한 리스트",
+                                               backgroundColor: CustomAppColors.darkGray1B1B1E.color,
+                                               tintColor: CustomAppColors.white.color)
     
     private let nowHotMovieTitle = UILabel().then {
         $0.text = "지금 뜨는 영화"
         $0.textColor = CustomAppColors.white.color
-        $0.font = .systemFont(ofSize: 18)
+        $0.font = .systemFont(ofSize: 16)
     }
     
     let nowHotMovieCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.posterCollectionViewLayout())
@@ -63,7 +54,7 @@ final class HomeView: BaseView {
     private let nowHotSeriesTitle = UILabel().then {
         $0.text = "지금 뜨는 TV 시리즈"
         $0.textColor = CustomAppColors.white.color
-        $0.font = .systemFont(ofSize: 18)
+        $0.font = .systemFont(ofSize: 16)
     }
     
     let nowHotSeriesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.posterCollectionViewLayout())

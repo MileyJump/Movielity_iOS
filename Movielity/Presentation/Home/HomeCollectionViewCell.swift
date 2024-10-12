@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import SnapKit
 import Then
 import RxSwift
@@ -15,17 +16,12 @@ import Kingfisher
 final class HomeCollectionViewCell: BaseCollectionViewCell {
     
     private let posterImageView = UIImageView().then {
-        $0.backgroundColor = .gray
-        $0.image = UIImage(systemName: "star")
+        $0.layer.cornerRadius = 5
+        $0.clipsToBounds = true
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        posterImageView.layer.cornerRadius = 5
     }
     
     override func setupSubviews() {
