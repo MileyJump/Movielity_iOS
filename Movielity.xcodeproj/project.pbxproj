@@ -52,6 +52,8 @@
 		B037EBC82CB7FA3300229EAE /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBC72CB7FA3300229EAE /* StringLiterals.swift */; };
 		B037EBCB2CB7FE2500229EAE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBCA2CB7FE2500229EAE /* DownloadViewController.swift */; };
 		B037EBCD2CB7FE5500229EAE /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBCC2CB7FE5500229EAE /* DownloadView.swift */; };
+		B037EBF42CB922D200229EAE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBF32CB922D200229EAE /* HomeViewModel.swift */; };
+		B037EBF72CB9264600229EAE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B037EBF62CB9264600229EAE /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -109,6 +111,7 @@
 		B037EBC72CB7FA3300229EAE /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
 		B037EBCA2CB7FE2500229EAE /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		B037EBCC2CB7FE5500229EAE /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		B037EBF32CB922D200229EAE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 			files = (
 				AA6522102CB535A300B56E01 /* Alamofire in Frameworks */,
 				AA6522132CB535BD00B56E01 /* Then in Frameworks */,
+				B037EBF72CB9264600229EAE /* Kingfisher in Frameworks */,
 				AA65220B2CB5359200B56E01 /* RxCocoa in Frameworks */,
 				AA6522062CB5352400B56E01 /* RealmSwift in Frameworks */,
 				AA65220D2CB5359200B56E01 /* RxSwift in Frameworks */,
@@ -265,6 +269,7 @@
 				B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */,
 				B037EBB52CB7BA9E00229EAE /* HomeView.swift */,
 				B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */,
+				B037EBF32CB922D200229EAE /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				AA65220C2CB5359200B56E01 /* RxSwift */,
 				AA65220F2CB535A300B56E01 /* Alamofire */,
 				AA6522122CB535BD00B56E01 /* Then */,
+				B037EBF62CB9264600229EAE /* Kingfisher */,
 			);
 			productName = Movielity;
 			productReference = 019E03B52CB52274008753E9 /* Movielity.app */;
@@ -385,6 +391,7 @@
 				AA6522092CB5359200B56E01 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				AA65220E2CB535A300B56E01 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				AA6522112CB535BD00B56E01 /* XCRemoteSwiftPackageReference "Then" */,
+				B037EBF52CB9264600229EAE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 019E03B62CB52274008753E9 /* Products */;
 			projectDirPath = "";
@@ -432,6 +439,7 @@
 				B037EBC62CB7F90200229EAE /* MovielityTabBar.swift in Sources */,
 				B037EBB22CB7BA8000229EAE /* UICollectionViewLayout +.swift in Sources */,
 				019E03D12CB52C72008753E9 /* SearchNetworkManager.swift in Sources */,
+				B037EBF42CB922D200229EAE /* HomeViewModel.swift in Sources */,
 				019E03EB2CB75C8E008753E9 /* TrendingMovie.swift in Sources */,
 				B037EBCD2CB7FE5500229EAE /* DownloadView.swift in Sources */,
 				019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */,
@@ -704,6 +712,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		B037EBF52CB9264600229EAE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -736,6 +752,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA6522112CB535BD00B56E01 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		B037EBF62CB9264600229EAE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B037EBF52CB9264600229EAE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

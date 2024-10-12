@@ -8,6 +8,9 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
+import Kingfisher
 
 final class HomeCollectionViewCell: BaseCollectionViewCell {
     
@@ -32,6 +35,26 @@ final class HomeCollectionViewCell: BaseCollectionViewCell {
     override func setupLayout() {
         posterImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+    }
+    
+    func configure(with movie: TrendingMovieResponse) {
+        if let posterPath = movie.poster_path {
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
+            let url = URL(string: imageUrl)
+            posterImageView.kf.setImage(with: url)
+                
+        }
+    }
+    
+    func seriesConfigure(with movie: TrendingSeriesResponse) {
+        if let posterPath = movie.poster_path {
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
+            let url = URL(string: imageUrl)
+            posterImageView.kf.setImage(with: url)
+                
         }
     }
 }

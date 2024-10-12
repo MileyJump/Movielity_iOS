@@ -68,9 +68,6 @@ final class HomeView: BaseView {
     
     let nowHotSeriesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.posterCollectionViewLayout())
     
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -82,7 +79,6 @@ final class HomeView: BaseView {
     
     override func setupSubviews() {
         
-        
         addSubview(contentScrollView)
         contentScrollView.addSubview(contentView)
         contentView.addSubview(posterImageView)
@@ -93,7 +89,6 @@ final class HomeView: BaseView {
         contentView.addSubview(nowHotMovieCollectionView)
         contentView.addSubview(nowHotSeriesTitle)
         contentView.addSubview(nowHotSeriesCollectionView)
-        
     }
     
     override func setupLayout() {
@@ -153,6 +148,7 @@ final class HomeView: BaseView {
             make.top.equalTo(nowHotSeriesTitle.snp.bottom)
             make.height.horizontalEdges.equalTo(nowHotMovieCollectionView)
         }
+        
         
         
     }

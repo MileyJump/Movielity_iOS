@@ -6,22 +6,34 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class HomeViewController: BaseViewController<HomeView> {
+final class HomeViewController: BaseViewController<HomeView> {
+    
+    private let viewModel = HomeViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBinding()
+        
+        viewModel.fetchTrendingMovies.onNext(())
         
     }
     
+    private func setupBinding() {
+        viewModel.trendingMovies
+            .observe(on: MainScheduler.instance)
+            .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
+                cell.configure(with: movie)
+            }
+            .disposed(by: disposeBag)
+    }
+    
     override func setupUI() {
+        print("실행 중")
         rootView.backgroundColor = CustomAppColors.backgroundBlack.color
-        
-        rootView.nowHotMovieCollectionView.dataSource = self
-        rootView.nowHotMovieCollectionView.delegate = self
-        
-        rootView.nowHotSeriesCollectionView.dataSource = self
-        rootView.nowHotSeriesCollectionView.delegate = self
         
         rootView.nowHotMovieCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         rootView.nowHotSeriesCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
@@ -50,19 +62,19 @@ class HomeViewController: BaseViewController<HomeView> {
     
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == rootView.nowHotMovieCollectionView {
-            return 20
-        } else {
-            return 10
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-        
-        return cell
-    }
-}
+//extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if collectionView == rootView.nowHotMovieCollectionView {
+//            return 20
+//        } else {
+//            return 10
+//        }
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
+//        
+//        return cell
+//    }
+//}
 
