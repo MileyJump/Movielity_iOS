@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 final class HomeViewController: BaseViewController<HomeView> {
     
@@ -24,6 +25,15 @@ final class HomeViewController: BaseViewController<HomeView> {
     }
     
     private func setupBinding() {
+        // 트렌딩 영화 리스트에서 첫 번째 영화를 가져와서 posterImageView에 설정
+        viewModel.trendingMovies
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self, onNext: { owner, movies in
+                let firstMovie = movies.first
+                owner.setPosterImage(from: firstMovie?.poster_path)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.trendingMovies
             .observe(on: MainScheduler.instance)
             .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
@@ -40,6 +50,13 @@ final class HomeViewController: BaseViewController<HomeView> {
             }
             .disposed(by: disposeBag)
     }
+    
+    private func setPosterImage(from path: String?) {
+          guard let path = path else { return }
+          let imageUrl = "https://image.tmdb.org/t/p/w500\(path)"
+          let url = URL(string: imageUrl)
+          rootView.posterImageView.kf.setImage(with: url) // Kingfisher 사용
+      }
     
     override func setupUI() {
         print("실행 중")

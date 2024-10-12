@@ -20,7 +20,7 @@ final class HomeView: BaseView {
         $0.backgroundColor = CustomAppColors.backgroundBlack.color
     }
     
-    private let posterImageView = UIImageView().then {
+    let posterImageView = UIImageView().then {
         $0.image = UIImage(systemName: "star")
         $0.backgroundColor = .blue
         $0.layer.cornerRadius = 5
@@ -106,8 +106,7 @@ final class HomeView: BaseView {
         posterImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
             make.horizontalEdges.equalToSuperview().inset(5)
-            make.height.equalTo(posterImageView.snp.width).multipliedBy(1.2)
-            
+            make.height.equalTo(posterImageView.snp.width).multipliedBy(1.2)  
         }
         
         playButton.snp.makeConstraints { make in
@@ -148,11 +147,6 @@ final class HomeView: BaseView {
             make.top.equalTo(nowHotSeriesTitle.snp.bottom)
             make.height.horizontalEdges.equalTo(nowHotMovieCollectionView)
         }
-        
-        
-        
     }
-    
-    
 }
 
