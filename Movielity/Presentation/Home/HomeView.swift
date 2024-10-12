@@ -100,7 +100,6 @@ final class HomeView: BaseView {
         contentView.snp.makeConstraints { make in
             make.edges.equalTo(contentScrollView)
             make.width.equalTo(contentScrollView.snp.width)
-            make.height.equalTo(1000)
         }
         
         posterImageView.snp.makeConstraints { make in
@@ -146,6 +145,7 @@ final class HomeView: BaseView {
         nowHotSeriesCollectionView.snp.makeConstraints { make in
             make.top.equalTo(nowHotSeriesTitle.snp.bottom)
             make.height.horizontalEdges.equalTo(nowHotMovieCollectionView)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
 }
