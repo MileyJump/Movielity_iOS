@@ -13,10 +13,10 @@ enum Router {
     case searchSeries(query: String)
     case trendingMovies
     case trendingSeries
-    case similarMovies(movie_id: String)
+    case similarMovies(movie_id: Int)
     case similarSeries(series_id: String)
-    case castMovie(movie_id: String)
-    case castSeries(series_id: String)
+    case creditsMovie(movie_id: Int)
+    case creditsSeries(series_id: Int)
     case genreMovie
     case genreSeries
 }
@@ -44,9 +44,9 @@ extension Router: TargetType {
             return "/movie/\(movie_id)/similar"
         case .similarSeries(let series_id):
             return "/tv/\(series_id)/similar"
-        case .castMovie(let movie_id):
+        case .creditsMovie(let movie_id):
             return "/movie/\(movie_id)/credits"
-        case .castSeries(let series_id):
+        case .creditsSeries(let series_id):
             return "/tv/\(series_id)/credits"
         case .genreMovie:
             return "/genre/movie/list"
