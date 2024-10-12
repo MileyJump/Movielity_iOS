@@ -5,15 +5,28 @@
 //  Created by 이윤지 on 10/12/24.
 //
 
+//샘플뷰 입니다!
 import UIKit
 
 final class MediaDetailViewController: UIViewController {
-
-    // MediaType: case .movie(let movieID)
-    var trendingMovie: TrendingMovieResponse?
     
-    var series: TrendingSeriesResponse?
-
+    // MediaType: case .movie(let movieID)
+    var movieModel: IntoMovieModel
+    
+    //MediaType: case .series(let seriesID) 이거 민경님 메인화면에서 tv시리즈 탭할때 전달받을 변수
+   // var series:
+    
+    
+    // 모델을 필수로 받는 초기화 메서드 정의
+    init(movieModel: IntoMovieModel) {
+        self.movieModel = movieModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 
     private let moviePosterImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,7 +50,7 @@ final class MediaDetailViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -74,14 +87,12 @@ final class MediaDetailViewController: UIViewController {
     
     // 영화 데이터를 UI에 적용
     private func configureView() {
-        guard let movie = trendingMovie else { return }
-        movieTitleLabel.text = movie.title
-        overviewLabel.text = movie.overview
+        movieTitleLabel.text = movieModel.title
+        overviewLabel.text = movieModel.overview
         
-        if let posterPath = movie.poster_path {
+        if let posterPath = movieModel.poster_path {
             let posterURL = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
             moviePosterImageView.kf.setImage(with: posterURL)
         }
     }
 }
-

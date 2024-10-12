@@ -25,7 +25,4 @@ protocol ViewModelType {
 }
 
 
-//protocol ResultItemViewControllerDelegate: AnyObject {
-//    func searchResultsViewControllerDidTapItem(_ movie: SearchResponse)
-//}
 

@@ -30,3 +30,25 @@ struct TrendingMovieResponse: Decodable {
     let media_type: String?
     let original_language: String?
 }
+
+extension TrendingMovieResponse {
+    func toIntoMovieModel() -> IntoMovieModel {
+        return IntoMovieModel(
+            id: self.id,
+            title: self.title,
+            original_title: self.original_title,
+            adult: self.adult,
+            backdrop_path: self.backdrop_path,
+            overview: self.overview,
+            poster_path: self.poster_path,
+            genre_ids: self.genre_ids,
+            popularity: self.popularity,
+            release_date: self.release_date,
+            vote_average: self.vote_average,
+            vote_count: self.vote_count,
+            video: nil,
+            media_type: self.media_type,
+            original_language: self.original_language
+        )
+    }
+}

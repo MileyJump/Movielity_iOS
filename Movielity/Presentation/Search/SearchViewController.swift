@@ -12,13 +12,13 @@ import RxSwift
 import RxCocoa
 
 final class SearchViewController: BaseViewController<SearchView> {
-
+    
     private let trendingViewModel = TrendingViewModel()
     private var trendingResults: [TrendingMovieResponse] = []
-
+    
     let searchResultViewModel = SearchResultsViewModel()
     private var searchResults: [SearchResponse] = []
-    
+    private let searchResultsVC = SearchResultsViewController()
     private let searchController: UISearchController = {
         let search = UISearchController(searchResultsController: SearchResultsViewController())
         search.searchBar.placeholder = "게임, 시리즈, 영화를 검색하세요..."
@@ -36,6 +36,7 @@ final class SearchViewController: BaseViewController<SearchView> {
         setupSearchBarBinding()
         
         lodingTredingAPI()
+        setupSearchResultsViewController()
     }
     
     private func lodingTredingAPI() {
@@ -51,7 +52,20 @@ final class SearchViewController: BaseViewController<SearchView> {
             .disposed(by: disposeBag)
         
     }
-
+    
+    //SearchViewController가 SearchResultsViewController의 delegate를 받아서 아이템 선택 시 화면 전환 수행
+    private func setupSearchResultsViewController() {
+        if let resultsVC = searchController.searchResultsController as? SearchResultsViewController {
+            resultsVC.delegate = self
+        }
+    }
+    
+    
+    func searchResultsViewControllerDidTapItem(_ movie: IntoMovieModel) {
+        let detailVC = MediaDetailViewController(movieModel: movie)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     private func setupDelegates() {
         rootView.searchTableView.delegate = self
         rootView.searchTableView.dataSource = self
@@ -61,7 +75,7 @@ final class SearchViewController: BaseViewController<SearchView> {
     private func setupNavigationItems() {
         navigationItem.searchController = searchController
     }
-
+    
     override func setupNavigationBar() {
         super.setupNavigationBar()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -69,22 +83,22 @@ final class SearchViewController: BaseViewController<SearchView> {
         navigationController?.navigationBar.tintColor = .white
         navigationItem.hidesSearchBarWhenScrolling = false
     }
-
+    
     private func setupSearchBarBinding() {
-          let searchInput = searchController.searchBar.rx.text.orEmpty.asObservable()
-          
-          let input = SearchResultsViewModel.Input(fetchMoviesTrigger: searchInput)
-          let output = searchResultViewModel.transform(input: input)
-          
-          output.searchMovies
-              .drive(with: self) { owner, movies in
-                  owner.searchResults = movies
-                  let resultsVC = owner.searchController.searchResultsController as? SearchResultsViewController
-                  resultsVC?.movie = movies
-                  resultsVC?.rootView.searchResultsCollectionView.reloadData()
-              }
-              .disposed(by: disposeBag)
-      }
+        let searchInput = searchController.searchBar.rx.text.orEmpty.asObservable()
+        
+        let input = SearchResultsViewModel.Input(fetchMoviesTrigger: searchInput)
+        let output = searchResultViewModel.transform(input: input)
+        
+        output.searchMovies
+            .drive(with: self) { owner, movies in
+                owner.searchResults = movies
+                let resultsVC = owner.searchController.searchResultsController as? SearchResultsViewController
+                resultsVC?.movie = movies
+                resultsVC?.rootView.searchResultsCollectionView.reloadData()
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 // 검색 결과 업데이트
@@ -124,7 +138,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureWithMovie(movie: movie)
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
@@ -139,14 +153,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
         let selectedMovie = trendingResults[indexPath.row]
+        let movieModel = selectedMovie.toIntoMovieModel()
         
-       //  MediaDetailViewController로 이동
-        let mediaDetailViewController = MediaDetailViewController()
-        mediaDetailViewController.trendingMovie = selectedMovie
-        
-        
-        
+        let mediaDetailViewController = MediaDetailViewController(movieModel: movieModel)
         navigationController?.pushViewController(mediaDetailViewController, animated: true)
+    }
+    
+}
+
+
+extension SearchViewController: SearchResultsViewControllerDelegate {
+    func searchResultsViewControllerDidSelectMovie(_ movie: IntoMovieModel) {
+        let detailVC = MediaDetailViewController(movieModel: movie)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
