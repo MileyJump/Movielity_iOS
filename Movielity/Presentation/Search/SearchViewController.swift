@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import SnapKit
 import RxSwift
 import RxCocoa
@@ -109,7 +110,6 @@ extension SearchViewController: UISearchResultsUpdating {
 
 
 
-
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trendingResults.count
@@ -139,6 +139,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("영화 선택됨: \(trendingResults[indexPath.row].title ?? "알 수 없음")")
+        let selectedMovie = trendingResults[indexPath.row]
+        
+       //  MediaDetailViewController로 이동
+        let mediaDetailViewController = MediaDetailViewController()
+        mediaDetailViewController.trendingMovie = selectedMovie
+        
+        
+        
+        navigationController?.pushViewController(mediaDetailViewController, animated: true)
     }
 }

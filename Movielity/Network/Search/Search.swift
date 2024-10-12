@@ -13,17 +13,40 @@ struct Search: Decodable {
 }
 
 struct SearchResponse: Decodable {
+    let id: Int?
+    let title: String?
+    let original_title: String?
     let adult: Bool?
     let backdrop_path: String?
-    let genre_ids: [Int]?
-    let id: Int?
-    let original_title: String?
     let overview: String?
-    let popularity: Double?
     let poster_path: String?
+    let genre_ids: [Int]?
+    let popularity: Double?
     let release_date: String?
-    let title: String?
-    let video: Bool?
     let vote_average: Double?
     let vote_count: Int?
+    
+    let video: Bool?
 }
+
+//let id: Int?
+//let title: String?
+//let original_title: String?
+//let adult: Bool?
+//let backdrop_path: String?
+//let overview: String?
+//let poster_path: String?
+//let genre_ids: [Int]?
+//let popularity: Double?
+//let release_date: String?
+//let vote_average: Double?
+//let vote_count: Int?
+
+
+//id
+//title
+//original_title
+//overview: String?
+//poster_path
+//vote_average
+

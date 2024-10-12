@@ -40,6 +40,8 @@
 		AA65232F2CB7E45400B56E01 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65232E2CB7E45400B56E01 /* BaseTableViewCell.swift */; };
 		AA6523312CB7E46600B56E01 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */; };
 		AAD8B0AC2CB8C38200ED45CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AAD8B0AB2CB8C38200ED45CC /* Kingfisher */; };
+		AAD8B0AF2CB9828600ED45CC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0AE2CB9828600ED45CC /* DetailViewController.swift */; };
+		AAD8B0B12CBA6B2900ED45CC /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */; };
 		B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */; };
 		B037EBAE2CB7BA5F00229EAE /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */; };
 		B037EBB02CB7BA6C00229EAE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAF2CB7BA6C00229EAE /* HomeTableViewCell.swift */; };
@@ -98,6 +100,8 @@
 		AA65232B2CB7E43400B56E01 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AA65232E2CB7E45400B56E01 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		AAD8B0AE2CB9828600ED45CC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
 		B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B037EBAF2CB7BA6C00229EAE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				AA6523162CB7DD1800B56E01 /* SearchResults */,
 				AA6523152CB7DD1500B56E01 /* Search */,
 				B037EBC92CB7FDFD00229EAE /* Download */,
+				AAD8B0AD2CB9827000ED45CC /* MediaDetail */,
 				B037EBCE2CB7FF3000229EAE /* TabBar */,
 			);
 			path = Presentation;
@@ -248,6 +253,7 @@
 				AA6522D92CB68DE400B56E01 /* SearchView.swift */,
 				AA6522E32CB68F7500B56E01 /* MovieLikedTableViewCell.swift */,
 				AA6522F52CB79C4800B56E01 /* TrendingViewModel.swift */,
+				AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -311,6 +317,14 @@
 				AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		AAD8B0AD2CB9827000ED45CC /* MediaDetail */ = {
+			isa = PBXGroup;
+			children = (
+				AAD8B0AE2CB9828600ED45CC /* DetailViewController.swift */,
+			);
+			path = MediaDetail;
 			sourceTree = "<group>";
 		};
 		B037EBC92CB7FDFD00229EAE /* Download */ = {
@@ -427,6 +441,8 @@
 				AA6522E92CB68FB300B56E01 /* CustomAppColors.swift in Sources */,
 				B037EBCB2CB7FE2500229EAE /* DownloadViewController.swift in Sources */,
 				AA6522F62CB79C4800B56E01 /* TrendingViewModel.swift in Sources */,
+				AAD8B0B12CBA6B2900ED45CC /* SearchResultsViewModel.swift in Sources */,
+				AAD8B0AF2CB9828600ED45CC /* DetailViewController.swift in Sources */,
 				AA6522DC2CB68DF400B56E01 /* SearchViewController.swift in Sources */,
 				AA6522DA2CB68DE400B56E01 /* SearchView.swift in Sources */,
 				AA6522E12CB68F2500B56E01 /* SearchResultsView.swift in Sources */,

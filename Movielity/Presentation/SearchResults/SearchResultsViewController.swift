@@ -16,7 +16,7 @@ final class SearchResultsViewController: BaseViewController<SearchResultsView> {
     var movie: [SearchResponse] = []
     
     //사진 탭했을 때 미디어상세 화면으로 이동할 때 사용하시면 되는 프로토콜 입니다.
-    //weak var delegate: ResultItemViewControllerDelegate?
+   // weak var delegate: ResultItemViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,17 +59,13 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
     
     
    // 탭했을 때 영화 정보를 전달 및 화면 이동 (프로토콜을 사용할 예정)
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        let title = movie[indexPath.row]
-        
-        //        let titlePreviewViewModel = MediaDetailViewModel(
-        //            movieTitle: title.title ?? "Unknown",
-        //            movieImage: "",
-        //            movieTitleOverview: title.overview ?? "No overview available"
-        //        )
-        //delegate?.ResultItemViewControllerDidTapItem(titlePreviewViewModel)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//            collectionView.deselectItem(at: indexPath, animated: true)
+//            let selectedMovie = movie[indexPath.row]
+//            
+//            // delegate 메서드 호출 시 영화 데이터를 전달합니다.
+//            delegate?.searchResultsViewControllerDidTapItem(selectedMovie)
+//        }
 }
 
 

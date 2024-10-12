@@ -23,3 +23,9 @@ protocol ViewModelType {
     
     func transform(input: Input) -> Output
 }
+
+
+//protocol ResultItemViewControllerDelegate: AnyObject {
+//    func searchResultsViewControllerDidTapItem(_ movie: SearchResponse)
+//}
+
