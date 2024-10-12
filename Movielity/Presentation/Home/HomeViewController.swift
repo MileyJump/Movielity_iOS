@@ -21,7 +21,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         
         viewModel.fetchTrendingMovies.onNext(())
         viewModel.fetchTrendingSeries.onNext(())
-        
     }
     
     private func setupBinding() {
@@ -55,7 +54,7 @@ final class HomeViewController: BaseViewController<HomeView> {
           guard let path = path else { return }
           let imageUrl = "https://image.tmdb.org/t/p/w500\(path)"
           let url = URL(string: imageUrl)
-          rootView.posterImageView.kf.setImage(with: url) // Kingfisher 사용
+          rootView.posterImageView.kf.setImage(with: url)
       }
     
     override func setupUI() {
@@ -67,41 +66,35 @@ final class HomeViewController: BaseViewController<HomeView> {
     }
     
     override func setupNavigationBar() {
-        let menu = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: nil, action: nil)
-        let profile = UIBarButtonItem(image: UIImage(systemName: "sparkles.tv"), style: .plain, target: nil, action: nil)
+        let search = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: nil, action: nil)
+        let tv = UIBarButtonItem(image: UIImage(systemName: "sparkles.tv"), style: .plain, target: nil, action: nil)
         
-        navigationItem.rightBarButtonItems = [menu, profile]
+        navigationItem.rightBarButtonItems = [search, tv]
         
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
+        search.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.searchButtonTapped()
+            }
+            .disposed(by: disposeBag)
+
+        tv.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.tvButtonTapped()
+            }
+            .disposed(by: disposeBag)
     }
     
-    private func handleMenuButton() {
-        // 메뉴 버튼 클릭시 처리할 액션
-        print("Menu button clicked")
+    private func searchButtonTapped() {
+        print("search Button Tapped")
+//        let searchVC = SearchViewController()
+//        navigationController?.pushViewController(searchVC, animated: true)
     }
     
-    private func handleProfileButton() {
-        // 프로필 버튼 클릭시 처리할 액션
-        print("Profile button clicked")
+    private func tvButtonTapped() {
+        print("tv Button Tapped")
     }
     
 }
-
-//extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if collectionView == rootView.nowHotMovieCollectionView {
-//            return 20
-//        } else {
-//            return 10
-//        }
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-//        
-//        return cell
-//    }
-//}
-
