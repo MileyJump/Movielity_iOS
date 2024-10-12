@@ -44,7 +44,6 @@ final class HomeCollectionViewCell: BaseCollectionViewCell {
             let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
             let url = URL(string: imageUrl)
             posterImageView.kf.setImage(with: url)
-                
         }
     }
     

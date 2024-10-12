@@ -13,7 +13,6 @@ import RxCocoa
 final class HomeViewModel {
     private let disposeBag = DisposeBag()
     
-    
     let fetchTrendingMovies = PublishSubject<Void>()
     let fetchTrendingSeries = PublishSubject<Void>()
     
@@ -32,6 +31,14 @@ final class HomeViewModel {
             .subscribe(with: self, onNext: { owner, movies in
                 owner.trendingMovies.onNext(movies)
             })
+            .disposed(by: disposeBag)
+        
+        fetchTrendingSeries
+            .flatMap { TrendingNetworkManager.shared.trendingSeries() }
+            .map { $0.results }
+            .subscribe(with: self) { owner, series in
+                owner.trendingSeries.onNext(series)
+            }
             .disposed(by: disposeBag)
     }
 }

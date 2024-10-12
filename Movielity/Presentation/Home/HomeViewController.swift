@@ -19,6 +19,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         setupBinding()
         
         viewModel.fetchTrendingMovies.onNext(())
+        viewModel.fetchTrendingSeries.onNext(())
         
     }
     
@@ -27,6 +28,15 @@ final class HomeViewController: BaseViewController<HomeView> {
             .observe(on: MainScheduler.instance)
             .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
                 cell.configure(with: movie)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.trendingSeries
+            .observe(on: MainScheduler.instance)
+            .bind(to: rootView.nowHotSeriesCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) {
+                row, series, cell in
+                print(series)
+                cell.seriesConfigure(with: series)
             }
             .disposed(by: disposeBag)
     }
