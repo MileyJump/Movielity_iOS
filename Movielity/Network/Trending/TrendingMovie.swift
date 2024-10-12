@@ -32,8 +32,8 @@ struct TrendingMovieResponse: Decodable {
 }
 
 extension TrendingMovieResponse {
-    func toIntoMovieModel() -> IntoMovieModel {
-        return IntoMovieModel(
+    func toIntoDetailMovieModel() -> IntoDetailMovieModel {
+        return IntoDetailMovieModel(
             id: self.id,
             title: self.title,
             original_title: self.original_title,

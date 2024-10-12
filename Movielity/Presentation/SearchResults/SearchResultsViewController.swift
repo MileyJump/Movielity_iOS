@@ -12,11 +12,6 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-protocol SearchResultsViewControllerDelegate: AnyObject {
-    func searchResultsViewControllerDidSelectMovie(_ movie: IntoMovieModel)
-}
-
-
 final class SearchResultsViewController: BaseViewController<SearchResultsView> {
     
     var movie: [SearchResponse] = []

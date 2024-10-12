@@ -10,15 +10,16 @@ import UIKit
 
 final class MediaDetailViewController: UIViewController {
     
-    // MediaType: case .movie(let movieID)
-    var movieModel: IntoMovieModel
+    // MediaType: case .movie(let movieID) 일 경우
+    var movieModel: IntoDetailMovieModel
     
-    //MediaType: case .series(let seriesID) 이거 민경님 메인화면에서 tv시리즈 탭할때 전달받을 변수
-   // var series:
+    //MediaType: case .series(let seriesID) 일 경우
+    //(이거 민경님 메인화면에서 tv시리즈 탭할때 전달받을 변수)
+   // var seriesModel:
     
     
     // 모델을 필수로 받는 초기화 메서드 정의
-    init(movieModel: IntoMovieModel) {
+    init(movieModel: IntoDetailMovieModel) {
         self.movieModel = movieModel
         super.init(nibName: nil, bundle: nil)
     }

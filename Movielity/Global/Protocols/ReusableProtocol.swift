@@ -24,5 +24,8 @@ protocol ViewModelType {
     func transform(input: Input) -> Output
 }
 
+protocol SearchResultsViewControllerDelegate: AnyObject {
+    func searchResultsViewControllerDidSelectMovie(_ movie: IntoDetailMovieModel)
+}
 
 

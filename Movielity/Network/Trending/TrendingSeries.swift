@@ -14,18 +14,19 @@ struct TrendingSeries: Decodable {
 }
 
 struct TrendingSeriesResponse: Decodable {
-    let backdrop_path: String?
     let id: Int?
     let name: String?
     let original_name: String?
+    let adult: Bool?
+    let backdrop_path: String?
     let overview: String?
     let poster_path: String?
-    let media_type: String?
-    let adult: Bool?
-    let original_language: String?
     let genre_ids: [Int]?
     let popularity: Double?
-    let first_air_date: String?
     let vote_average: Double?
     let vote_count: Int?
+    
+    let media_type: String?
+    let original_language: String?
+    let first_air_date: String?
 }

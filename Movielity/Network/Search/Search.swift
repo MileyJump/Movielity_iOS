@@ -29,7 +29,7 @@ struct SearchResponse: Decodable {
     let video: Bool?
 }
 
-struct IntoMovieModel: Identifiable {
+struct IntoDetailMovieModel: Identifiable {
     let id: Int?
     let title: String?
     let original_title: String?
@@ -48,8 +48,8 @@ struct IntoMovieModel: Identifiable {
 }
 
 extension SearchResponse {
-    func toIntoMovieModel() -> IntoMovieModel {
-        return IntoMovieModel(
+    func toIntoMovieModel() -> IntoDetailMovieModel {
+        return IntoDetailMovieModel(
             id: self.id,
             title: self.title,
             original_title: self.original_title,
