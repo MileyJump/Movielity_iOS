@@ -1,3 +1,4 @@
+
 //
 //  HomeView.swift
 //  Movielity
@@ -96,7 +97,7 @@ final class HomeView: BaseView {
         posterImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
             make.horizontalEdges.equalToSuperview().inset(5)
-            make.height.equalTo(posterImageView.snp.width).multipliedBy(1.2)  
+            make.height.equalTo(posterImageView.snp.width).multipliedBy(1.4)
         }
         
         playButton.snp.makeConstraints { make in
@@ -125,7 +126,7 @@ final class HomeView: BaseView {
         nowHotMovieCollectionView.snp.makeConstraints { make in
             make.top.equalTo(nowHotMovieTitle.snp.bottom)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(150)
+            make.height.equalTo((UIScreen.main.bounds.width - 10) / 4 * 1.5)
         }
         
         nowHotSeriesTitle.snp.makeConstraints { make in
@@ -140,4 +141,3 @@ final class HomeView: BaseView {
         }
     }
 }
-

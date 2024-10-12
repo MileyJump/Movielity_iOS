@@ -20,20 +20,15 @@ final class HomeViewController: BaseViewController<HomeView> {
         super.viewDidLoad()
         setupBinding()
         
+        // 데이터를 가져오는 트리거
         viewModel.fetchTrendingMovies.onNext(())
         viewModel.fetchTrendingSeries.onNext(())
     }
     
+    
     private func setupBinding() {
-        // 트렌딩 영화 리스트에서 첫 번째 영화를 가져와서 posterImageView에 설정
-        viewModel.trendingMovies
-            .observe(on: MainScheduler.instance)
-            .subscribe(with: self, onNext: { owner, movies in
-                let firstMovie = movies.first
-                owner.setPosterImage(from: firstMovie?.poster_path)
-            })
-            .disposed(by: disposeBag)
         
+        // 영화 데이터를 컬렉션 뷰에 바인딩
         viewModel.trendingMovies
             .observe(on: MainScheduler.instance)
             .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
@@ -41,13 +36,21 @@ final class HomeViewController: BaseViewController<HomeView> {
             }
             .disposed(by: disposeBag)
         
+        // 시리즈 데이터를 컬렉션 뷰에 바인딩
         viewModel.trendingSeries
             .observe(on: MainScheduler.instance)
             .bind(to: rootView.nowHotSeriesCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) {
                 row, series, cell in
-                print(series)
                 cell.seriesConfigure(with: series)
             }
+            .disposed(by: disposeBag)
+        
+        // 랜덤 포스터 이미지를 구독하여 `posterImageView`에 설정
+        viewModel.randomPosterImageURL
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self, onNext: { owner, posterPath in
+                owner.setPosterImage(from: posterPath)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -59,7 +62,6 @@ final class HomeViewController: BaseViewController<HomeView> {
       }
     
     override func setupUI() {
-        print("실행 중")
         rootView.backgroundColor = CustomAppColors.backgroundBlack.color
         
         rootView.nowHotMovieCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
@@ -90,12 +92,9 @@ final class HomeViewController: BaseViewController<HomeView> {
     
     private func searchButtonTapped() {
         print("search Button Tapped")
-//        let searchVC = SearchViewController()
-//        navigationController?.pushViewController(searchVC, animated: true)
     }
     
     private func tvButtonTapped() {
         print("tv Button Tapped")
     }
-    
 }
