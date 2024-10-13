@@ -16,7 +16,7 @@ enum MovielityTabBar {
     var viewController: UIViewController {
         switch self {
         case .mainHome:
-            return CustomAlertViewController()
+            return HomeViewController()
         case .search:
             return SearchViewController()
         case .download:
