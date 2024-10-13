@@ -9,6 +9,7 @@ import UIKit
 
 import RxSwift
 import Kingfisher
+import SnapKit
 
 final class DetailViewController: BaseViewController<DetailView> {
     deinit {
@@ -18,7 +19,6 @@ final class DetailViewController: BaseViewController<DetailView> {
     private let viewModel: DetailViewModel
     private let disposeBag = DisposeBag()
     private let mediaType: MediaType
-    private let images = Array(repeating: UIImage(systemName: "star"), count: 12)
     
     init(viewModel: DetailViewModel, mediaType: MediaType) {
         self.viewModel = viewModel
@@ -32,7 +32,6 @@ final class DetailViewController: BaseViewController<DetailView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         bind()
     }
     
@@ -46,14 +45,30 @@ final class DetailViewController: BaseViewController<DetailView> {
         
         output.similarImages
             .bind(to: rootView.similarCollectionView.rx.items(cellIdentifier: "cell", cellType: UICollectionViewCell.self)) { index, imageUrl, cell in
-                let imageView = UIImageView()
-                imageView.kf.setImage(with: URL(string: imageUrl))
-                cell.contentView.addSubview(imageView)
+                let imageView: UIImageView
+                if let existingImageView = cell.contentView.subviews.compactMap({ $0 as? UIImageView }).first {
+                    imageView = existingImageView
+                } else {
+                    imageView = UIImageView()
+                    imageView.contentMode = .scaleAspectFill
+                    imageView.clipsToBounds = true
+                    cell.contentView.addSubview(imageView)
+                    imageView.snp.makeConstraints { make in
+                        make.edges.equalToSuperview()
+                    }
+                }
                 
-                imageView.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
+                let fullImageUrl = "https://image.tmdb.org/t/p/w500\(imageUrl)"
+                if let url = URL(string: fullImageUrl) {
+                    imageView.kf.setImage(with: url)
                 }
             }
+            .disposed(by: disposeBag)
+        
+        output.similarImages
+            .bind(with: self, onNext: { owner, _ in
+                owner.rootView.updateCollectionViewHeight()
+            })
             .disposed(by: disposeBag)
     }
 }

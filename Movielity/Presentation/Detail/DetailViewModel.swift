@@ -42,18 +42,24 @@ final class DetailViewModel: ViewModelType {
         
         let similarImages = input.mediaType
             .flatMap { mediaType -> Observable<[String]> in
-                print("aaaaa")
                 switch mediaType {
                 case .movie(let movieID):
                     return SimilarNetworkManager.shared.similarMovies(movie_id: movieID)
                         .map { similar in
-                            return similar.results.prefix(12)
-                                .compactMap { $0.poster_path }
+                            return similar.results.prefix(12).compactMap { $0.poster_path }
+                        }
+                        .catch { error in
+                            print(error)
+                            return Observable.just([])
                         }
                 case .series(let seriesID):
                     return SimilarNetworkManager.shared.similarSeries(series_id: String(seriesID))
                         .map { similar in
                             return similar.results.prefix(12).compactMap { $0.poster_path }
+                        }
+                        .catch { error in
+                            print(error)
+                            return Observable.just([])
                         }
                 }
             }
