@@ -30,7 +30,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         
         // 영화 데이터를 컬렉션 뷰에 바인딩
         viewModel.trendingMovies
-            .observe(on: MainScheduler.instance)
             .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
                 cell.configure(with: movie)
             }
@@ -38,7 +37,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         
         // 시리즈 데이터를 컬렉션 뷰에 바인딩
         viewModel.trendingSeries
-            .observe(on: MainScheduler.instance)
             .bind(to: rootView.nowHotSeriesCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) {
                 row, series, cell in
                 cell.seriesConfigure(with: series)
@@ -47,8 +45,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         
         // 랜덤 포스터 이미지를 구독하여 `posterImageView`에 설정
         viewModel.randomPosterImageURL
-            .observe(on: MainScheduler.instance)
-            .subscribe(with: self, onNext: { owner, posterPath in
+            .bind(with: self, onNext: { owner, posterPath in
                 owner.setPosterImage(from: posterPath)
             })
             .disposed(by: disposeBag)

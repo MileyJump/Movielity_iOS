@@ -251,7 +251,6 @@
 		AA6522D22CB68C8C00B56E01 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				B0DA47162CBA38A0009DC941 /* CustomButton */,
 				AA6523282CB7E3F100B56E01 /* Base */,
 				AA6523172CB7DD5100B56E01 /* Home */,
 				AA6523162CB7DD1800B56E01 /* SearchResults */,
@@ -325,6 +324,7 @@
 		AA6523192CB7DEF600B56E01 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				B0DA47162CBA38A0009DC941 /* Components */,
 				AA6522ED2CB68FF800B56E01 /* Model */,
 				AA6522EA2CB68FBE00B56E01 /* Protocols */,
 				AA65231B2CB7DFC800B56E01 /* Extensions */,
@@ -379,12 +379,12 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		B0DA47162CBA38A0009DC941 /* CustomButton */ = {
+		B0DA47162CBA38A0009DC941 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				B0DA47172CBA38F6009DC941 /* CustomButton.swift */,
 			);
-			path = CustomButton;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

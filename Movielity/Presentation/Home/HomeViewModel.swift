@@ -33,7 +33,7 @@ final class HomeViewModel {
         fetchTrendingMovies
             .flatMap { TrendingNetworkManager.shared.trendingMovies() }
             .map { $0.results } // API에서 받아온 결과 중 영화 리스트만 추출
-            .subscribe(with: self, onNext: { owner, movies in
+            .bind(with: self, onNext: { owner, movies in
                 owner.trendingMovies.onNext(movies)
             })
             .disposed(by: disposeBag)
@@ -42,9 +42,9 @@ final class HomeViewModel {
         fetchTrendingSeries
             .flatMap { TrendingNetworkManager.shared.trendingSeries() }
             .map { $0.results }
-            .subscribe(with: self) { owner, series in
+            .bind(with: self, onNext: { owner, series in
                 owner.trendingSeries.onNext(series)
-            }
+            })
             .disposed(by: disposeBag)
         
         // 영화와 시리즈 데이터를 결합하고 랜덤 포스터 이미지를 선택
