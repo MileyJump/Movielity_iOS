@@ -14,7 +14,7 @@ import Kingfisher
 final class HomeViewController: BaseViewController<HomeView> {
     
     private let viewModel = HomeViewModel()
-    private let disposeBag = DisposeBag()
+    //private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class BaseViewController<RootView: UIView>: UIViewController {
     
@@ -14,6 +15,8 @@ class BaseViewController<RootView: UIView>: UIViewController {
     override func loadView() {
         view = rootView
     }
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

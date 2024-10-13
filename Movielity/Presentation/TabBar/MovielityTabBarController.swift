@@ -24,6 +24,6 @@ final class MovielityTabBarController: UITabBarController {
         }
         
         setViewControllers(viewControllers, animated: true)
-        tabBar.tintColor = .black
+        tabBar.tintColor = .gray
     }
 }

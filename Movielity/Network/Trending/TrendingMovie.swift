@@ -14,18 +14,41 @@ struct TrendingMovie: Decodable {
 }
 
 struct TrendingMovieResponse: Decodable {
-    let backdrop_path: String?
     let id: Int?
     let title: String?
     let original_title: String?
+    let adult: Bool?
+    let backdrop_path: String?
     let overview: String?
     let poster_path: String?
-    let media_type: String?
-    let adult: Bool?
-    let original_language: String?
     let genre_ids: [Int]?
     let popularity: Double?
     let release_date: String?
     let vote_average: Double?
     let vote_count: Int?
+    
+    let media_type: String?
+    let original_language: String?
+}
+
+extension TrendingMovieResponse {
+    func toIntoDetailMovieModel() -> IntoDetailMovieModel {
+        return IntoDetailMovieModel(
+            id: self.id,
+            title: self.title,
+            original_title: self.original_title,
+            adult: self.adult,
+            backdrop_path: self.backdrop_path,
+            overview: self.overview,
+            poster_path: self.poster_path,
+            genre_ids: self.genre_ids,
+            popularity: self.popularity,
+            release_date: self.release_date,
+            vote_average: self.vote_average,
+            vote_count: self.vote_count,
+            video: nil,
+            media_type: self.media_type,
+            original_language: self.original_language
+        )
+    }
 }

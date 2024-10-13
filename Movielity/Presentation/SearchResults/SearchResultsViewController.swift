@@ -6,14 +6,17 @@
 //
 
 import UIKit
+
 import SnapKit
+import RxSwift
+import RxCocoa
+import Kingfisher
 
 final class SearchResultsViewController: BaseViewController<SearchResultsView> {
     
-    var DummyMovieTitle: [DummyTrendingMovieResponse] = [] // 더미 데이터들
-   
-    //사진 탭했을 때 미디어상세 화면으로 이동할 때 사용하시면 되는 프로토콜 입니다.
-    //weak var delegate: ResultItemViewControllerDelegate?
+    var movie: [SearchResponse] = []
+    
+    weak var delegate: SearchResultsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,30 +44,29 @@ final class SearchResultsViewController: BaseViewController<SearchResultsView> {
 
 extension SearchResultsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DummyMovieTitle.count
+        return movie.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultItemCollectionViewCell.identifier, for: indexPath) as? ResultItemCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let title = DummyMovieTitle[indexPath.row]
-        cell.configure(with: title)
+        
+        let movieItem = movie[indexPath.row]
+        cell.configure(with: movieItem.poster_path ?? "")
         return cell
     }
     
     
-   // 탭했을 때 영화 정보를 전달 및 화면 이동 (프로토콜을 사용할 예정)
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let title = DummyMovieTitle[indexPath.row]
         
-        //        let titlePreviewViewModel = MediaDetailViewModel(
-        //            movieTitle: title.title ?? "Unknown",
-        //            movieImage: "",
-        //            movieTitleOverview: title.overview ?? "No overview available"
-        //        )
-        //delegate?.ResultItemViewControllerDidTapItem(titlePreviewViewModel)
+        let selectedSearchResultMovie = movie[indexPath.row]
+        print("선택된 영화: \(selectedSearchResultMovie)")
+        
+        let movieModel = selectedSearchResultMovie.toIntoMovieModel()
+        delegate?.searchResultsViewControllerDidSelectMovie(movieModel)
     }
 }
 
