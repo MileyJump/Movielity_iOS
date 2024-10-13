@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc = MovielityTabBarController()
         window.rootViewController = vc
         
+        
         window.makeKeyAndVisible()
         self.window = window
     }
