@@ -7,98 +7,91 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController<HomeView> {
+import RxSwift
+import RxCocoa
+import Kingfisher
+
+final class HomeViewController: BaseViewController<HomeView> {
+    
+    private let viewModel = HomeViewModel()
+    //private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBinding()
         
+        // 데이터를 가져오는 트리거
+        viewModel.fetchTrendingMovies.onNext(())
+        viewModel.fetchTrendingSeries.onNext(())
     }
+    
+    
+    private func setupBinding() {
+        
+        // 영화 데이터를 컬렉션 뷰에 바인딩
+        viewModel.trendingMovies
+            .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
+                cell.configure(with: movie)
+            }
+            .disposed(by: disposeBag)
+        
+        // 시리즈 데이터를 컬렉션 뷰에 바인딩
+        viewModel.trendingSeries
+            .bind(to: rootView.nowHotSeriesCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) {
+                row, series, cell in
+                cell.seriesConfigure(with: series)
+            }
+            .disposed(by: disposeBag)
+        
+        // 랜덤 포스터 이미지를 구독하여 `posterImageView`에 설정
+        viewModel.randomPosterImageURL
+            .bind(with: self, onNext: { owner, posterPath in
+                owner.setPosterImage(from: posterPath)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setPosterImage(from path: String?) {
+          guard let path = path else { return }
+          let imageUrl = "https://image.tmdb.org/t/p/w500\(path)"
+          let url = URL(string: imageUrl)
+          rootView.posterImageView.kf.setImage(with: url)
+      }
     
     override func setupUI() {
         rootView.backgroundColor = CustomAppColors.backgroundBlack.color
         
-        rootView.posterTableView.dataSource = self
-        rootView.posterTableView.delegate = self
-        
-        rootView.posterTableView.rowHeight = UITableView.automaticDimension
-        rootView.posterTableView.estimatedRowHeight = 450
-        
-        rootView.posterTableView.register(HomePosterTableViewCell.self, forCellReuseIdentifier: HomePosterTableViewCell.identifier)
-        rootView.posterTableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
+        rootView.nowHotMovieCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        rootView.nowHotSeriesCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
     }
     
     override func setupNavigationBar() {
-        let menu = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: nil, action: nil)
-        let profile = UIBarButtonItem(image: UIImage(systemName: "sparkles.tv"), style: .plain, target: nil, action: nil)
+        let search = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: nil, action: nil)
+        let tv = UIBarButtonItem(image: UIImage(systemName: "sparkles.tv"), style: .plain, target: nil, action: nil)
         
-        navigationItem.rightBarButtonItems = [menu, profile]
+        navigationItem.rightBarButtonItems = [search, tv]
         
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
+        search.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.searchButtonTapped()
+            }
+            .disposed(by: disposeBag)
+
+        tv.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.tvButtonTapped()
+            }
+            .disposed(by: disposeBag)
     }
     
-    private func handleMenuButton() {
-        // 메뉴 버튼 클릭시 처리할 액션
-        print("Menu button clicked")
+    private func searchButtonTapped() {
+        print("search Button Tapped")
     }
     
-    private func handleProfileButton() {
-        // 프로필 버튼 클릭시 처리할 액션
-        print("Profile button clicked")
-    }
-    
-}
-
-
-
-
-
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomePosterTableViewCell.identifier, for: indexPath) as? HomePosterTableViewCell else { return UITableViewCell() }
-            
-            return cell
-        } else {
-            // 나머지 셀에서는 HomeTableViewCell 사용
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
-            
-            cell.collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
-            
-            cell.selectionStyle = .none
-            
-            cell.collectionView.tag = indexPath.row
-            cell.collectionView.delegate = self
-            cell.collectionView.dataSource = self
-            
-            cell.collectionView.isPagingEnabled = true
-            
-            return cell
-        }
+    private func tvButtonTapped() {
+        print("tv Button Tapped")
     }
 }
-
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if collectionView.tag == 1 {
-            return 2
-        } else {
-            return 10
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
-        
-        return cell
-    }
-}
-
