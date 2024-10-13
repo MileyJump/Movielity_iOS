@@ -35,11 +35,11 @@ final class SearchViewController: BaseViewController<SearchView> {
         setupNavigationItems()
         setupSearchBarBinding()
         
-        lodingTredingAPI()
+        loadingTredingAPI()
         setupSearchResultsViewController()
     }
     
-    private func lodingTredingAPI() {
+    private func loadingTredingAPI() {
         
         let input = TrendingViewModel.Input(fetchMoviesTrigger: Observable.just(()))
         let output = trendingViewModel.transform(input: input)
