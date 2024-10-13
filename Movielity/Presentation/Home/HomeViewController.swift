@@ -49,6 +49,13 @@ final class HomeViewController: BaseViewController<HomeView> {
                 owner.setPosterImage(from: posterPath)
             })
             .disposed(by: disposeBag)
+        
+        // 장르 데이터를 구독하여 TagLabel에 설정
+        viewModel.genreText
+            .bind(with: self, onNext: { owner, genre in
+                owner.rootView.tagLabel.text = genre
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setPosterImage(from path: String?) {

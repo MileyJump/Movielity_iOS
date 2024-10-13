@@ -24,6 +24,7 @@ final class GenreNetworkManager {
                     .responseDecodable(of: Genre.self) { response in
                         switch response.result {
                         case .success(let success):
+                            print(success)
                             observer.onNext(success)
                             observer.onCompleted()
                         case .failure(let failure):
@@ -46,6 +47,7 @@ final class GenreNetworkManager {
                     .responseDecodable(of: Genre.self) { response in
                         switch response.result {
                         case .success(let success):
+                            print(success)
                             observer.onNext(success)
                             observer.onCompleted()
                         case .failure(let failure):

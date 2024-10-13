@@ -20,8 +20,10 @@ final class HomeViewModel {
     let trendingMovies = PublishSubject<[TrendingMovieResponse]>()
     let trendingSeries = PublishSubject<[TrendingSeriesResponse]>()
     
+    
     // 랜덤 포스터 이미지를 방출할 Observable
     let randomPosterImageURL = PublishSubject<String?>()
+    let genreText = PublishSubject<String>()
     
     init() {
         setupBinding()
@@ -53,11 +55,53 @@ final class HomeViewModel {
                 let moviePosters = movies.compactMap { $0.poster_path }
                 let seriesPosters = series.compactMap { $0.poster_path }
                 let allPosters = moviePosters + seriesPosters
-                
-                return allPosters.randomElement()
+                let randomPoster = allPosters.randomElement()
+                if let randomPoster {
+                    // 영화 혹은 시리즈에서 해당 포스터에 맞는 작품 찾기
+                    if let movie = movies.first(where: { $0.poster_path == randomPoster }) {
+                        // 영화 장르 불러오기
+                        if let id = movie.genre_ids {
+                            print("영화 장르 ID : \(id)")
+                            self.fetchGenre(forMovieId: id)
+                        }
+                    } else if let series = series.first(where: { $0.poster_path == randomPoster }) {
+                        // 시리즈 장르 불러오기
+                        if let id = series.genre_ids {
+                            print("시리즈 장르 ID: \(id)")
+                            self.fetchGenre(forSeriesId: id)
+                        }
+                    }
+                }
+                return randomPoster
             }
             .bind(to: randomPosterImageURL)
             .disposed(by: disposeBag)
     }
     
+    // 영화의 장르를 불러오는 함수
+    private func fetchGenre(forMovieId ids: [Int]) {
+        GenreNetworkManager.shared.genreMovies()
+            .map { genreResponse in
+                // 주어진 ID들에 해당하는 장르 이름들을 필터링
+                let genreNames = genreResponse.genres
+                    .filter { ids.contains($0.id) } // 주어진 IDs에 해당하는 장르만 필터링
+                    .map { $0.name }
+                return genreNames.isEmpty ? "Unknown" : genreNames.joined(separator: " · ") // 장르 이름들을 " · "로 구분하여 결합
+            }
+            .bind(to: genreText)
+            .disposed(by: disposeBag)
+    }
+    
+    // 시리즈의 장르를 불러오는 함수
+    private func fetchGenre(forSeriesId ids: [Int]) {
+        GenreNetworkManager.shared.genreSeries()
+            .map { genreResponse in
+                let genreNames = genreResponse.genres
+                    .filter { ids.contains($0.id) } // 주어진 IDs에 해당하는 장르만 필터링
+                    .map { $0.name }
+                return genreNames.isEmpty ? "Unknown" : genreNames.joined(separator: " · ") // 장르 이름들을 " · "로 구분하여 결합
+            }
+            .bind(to: genreText)
+            .disposed(by: disposeBag)
+    }
 }
