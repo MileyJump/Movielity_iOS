@@ -48,6 +48,8 @@
 		AA6523312CB7E46600B56E01 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */; };
 		AAD8B0AC2CB8C38200ED45CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AAD8B0AB2CB8C38200ED45CC /* Kingfisher */; };
 		AAD8B0B12CBA6B2900ED45CC /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */; };
+		AAD8B0B32CBBB45100ED45CC /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B22CBBB45100ED45CC /* ViewModelType.swift */; };
+		AAD8B0B52CBBB46300ED45CC /* SearchResultsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B42CBBB46300ED45CC /* SearchResultsDelegate.swift */; };
 		B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */; };
 		B037EBAE2CB7BA5F00229EAE /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */; };
 		B037EBB22CB7BA8000229EAE /* UICollectionViewLayout +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBB12CB7BA8000229EAE /* UICollectionViewLayout +.swift */; };
@@ -114,6 +116,8 @@
 		AA65232E2CB7E45400B56E01 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
+		AAD8B0B22CBBB45100ED45CC /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		AAD8B0B42CBBB46300ED45CC /* SearchResultsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDelegate.swift; sourceTree = "<group>"; };
 		B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B037EBB12CB7BA8000229EAE /* UICollectionViewLayout +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout +.swift"; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				B037EBB72CB7BABC00229EAE /* ReusableProtocol.swift */,
+				AAD8B0B22CBBB45100ED45CC /* ViewModelType.swift */,
+				AAD8B0B42CBBB46300ED45CC /* SearchResultsDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 				AAD8B0B12CBA6B2900ED45CC /* SearchResultsViewModel.swift in Sources */,
 				019E042A2CB95420008753E9 /* SimilarSeries.swift in Sources */,
 				AA6522F62CB79C4800B56E01 /* TrendingViewModel.swift in Sources */,
+				AAD8B0B32CBBB45100ED45CC /* ViewModelType.swift in Sources */,
 				AA6522F62CB79C4800B56E01 /* TrendingViewModel.swift in Sources */,
 				B0DA47182CBA38F6009DC941 /* CustomButton.swift in Sources */,
 				AA6522DC2CB68DF400B56E01 /* SearchViewController.swift in Sources */,
@@ -497,6 +504,7 @@
 				AA65232F2CB7E45400B56E01 /* BaseTableViewCell.swift in Sources */,
 				AA6522E62CB68F8E00B56E01 /* ResultItemCollectionViewCell.swift in Sources */,
 				AA6523312CB7E46600B56E01 /* BaseCollectionViewCell.swift in Sources */,
+				AAD8B0B52CBBB46300ED45CC /* SearchResultsDelegate.swift in Sources */,
 				B037EBB62CB7BA9E00229EAE /* HomeView.swift in Sources */,
 				B037EBB82CB7BABC00229EAE /* ReusableProtocol.swift in Sources */,
 				B037EBC62CB7F90200229EAE /* MovielityTabBar.swift in Sources */,

@@ -16,7 +16,7 @@ final class SearchResultsViewController: BaseViewController<SearchResultsView> {
     
     var movie: [SearchResponse] = []
     
-    weak var delegate: SearchResultsViewControllerDelegate?
+    weak var delegate: SearchResultsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

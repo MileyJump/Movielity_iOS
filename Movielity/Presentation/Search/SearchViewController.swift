@@ -164,7 +164,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-extension SearchViewController: SearchResultsViewControllerDelegate {
+extension SearchViewController: SearchResultsDelegate {
     func searchResultsViewControllerDidSelectMovie(_ movie: IntoDetailMovieModel) {
         let detailVC = MediaDetailViewController(movieModel: movie)
         navigationController?.pushViewController(detailVC, animated: true)
