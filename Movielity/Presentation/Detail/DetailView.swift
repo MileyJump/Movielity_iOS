@@ -94,7 +94,7 @@ final class DetailView: BaseView {
         }
         
         posterImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().inset(50)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(150)
         }
