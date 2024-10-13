@@ -58,22 +58,17 @@ final class DetailView: BaseView {
         scrollView.backgroundColor = .black
         
         posterImageView.image = UIImage(systemName: "star")
-        posterImageView.contentMode = .scaleAspectFit
         
-        titleLabel.text = "스파이더맨: 홈커밍"
         titleLabel.textColor = .white
         titleLabel.font = .boldSystemFont(ofSize: 17)
         
-        voteAverageLabel.text = "8.8"
         voteAverageLabel.textColor = .white
         voteAverageLabel.font = .systemFont(ofSize: 13)
         
-        overviewLabel.text = "When you live under the same roof, a family-life bond inevitably develops. That is certainly the case for the inhabitants of Zhan Ke Zhi Jia, a hostel. Xie Ke Zhan, a graduate student who owns the hostel, cares about all of his friends who live there and tries"
         overviewLabel.textColor = .gray
         overviewLabel.numberOfLines = 0
         overviewLabel.font = .boldSystemFont(ofSize: 13)
         
-        castLabel.text = "출연: 톰 홀랜드 다우니주니어"
         castLabel.textColor = .gray
         castLabel.font = .systemFont(ofSize: 13)
         
