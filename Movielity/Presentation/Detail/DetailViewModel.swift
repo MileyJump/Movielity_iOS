@@ -8,63 +8,73 @@
 import RxSwift
 import RxCocoa
 
-enum MediaType {
-    case movie(movieID: Int)
-    case series(seriesID: Int)
-}
-
-final class DetailViewModel: ViewModelType {
-    struct Input {
-        let mediaType: Observable<MediaType>
-    }
-    
+final class DetailViewModel {
     struct Output {
         let castNames: Observable<String>
         let similarImages: Observable<[String]>
+        let posterImage: Observable<String>
+        let title: Observable<String>
+        let vote: Observable<String>
+        let overview: Observable<String>
     }
     
-    func transform(input: Input) -> Output {
-        let castNames = input.mediaType
-            .flatMap { mediaType -> Observable<Credits> in
-                switch mediaType {
-                case .movie(let movieID):
-                    return CreditsNetworkManager.shared.creditsMovies(movie_id: movieID)
-                case .series(let seriesID):
-                    return CreditsNetworkManager.shared.creditsSeries(series_id: seriesID)
-                }
-            }
-            .map { credits in
-                let names = credits.cast
-                    .compactMap { $0.name }.joined(separator: ", ")
-                return names.isEmpty ? "" : "출연: \(names)"
-            }
-            .observe(on: MainScheduler.instance)
+    private let movieModel: IntoDetailMovieModel
+    
+    private let disposeBag = DisposeBag()
+    
+    init(movieModel: IntoDetailMovieModel) {
+        self.movieModel = movieModel
+    }
+    
+    func transform() -> Output {
+        let castNames = fetchCastNames()
+        let similarImages = fetchSimilarImages()
+        let posterImage = Observable.just(movieModel.poster_path ?? "")
+        let title = Observable.just(movieModel.title ?? "")
+        let vote = Observable.just("평점: \(movieModel.vote_average ?? 0.0)")
+        let overview = Observable.just(movieModel.overview ?? "")
         
-        let similarImages = input.mediaType
-            .flatMap { mediaType -> Observable<[String]> in
-                switch mediaType {
-                case .movie(let movieID):
-                    return SimilarNetworkManager.shared.similarMovies(movie_id: movieID)
-                        .map { similar in
-                            return similar.results.prefix(12).compactMap { $0.poster_path }
-                        }
-                        .catch { error in
-                            print(error)
-                            return Observable.just([])
-                        }
-                case .series(let seriesID):
-                    return SimilarNetworkManager.shared.similarSeries(series_id: String(seriesID))
-                        .map { similar in
-                            return similar.results.prefix(12).compactMap { $0.poster_path }
-                        }
-                        .catch { error in
-                            print(error)
-                            return Observable.just([])
-                        }
+        return Output(
+            castNames: castNames,
+            similarImages: similarImages,
+            posterImage: posterImage,
+            title: title,
+            vote: vote,
+            overview: overview
+        )
+    }
+    
+    private func fetchCastNames() -> Observable<String> {
+        if movieModel.media_type == "movie" {
+            return CreditsNetworkManager.shared.creditsMovies(movie_id: movieModel.id ?? 0)
+                .map { credits in
+                    let names = credits.cast.compactMap { $0.name }.joined(separator: ", ")
+                    return names.isEmpty ? "" : "출연: \(names)"
                 }
-            }
-            .observe(on: MainScheduler.instance)
-        
-        return Output(castNames: castNames, similarImages: similarImages)
+                .catchAndReturn("")
+        } else if movieModel.media_type == "tv" {
+            return CreditsNetworkManager.shared.creditsSeries(series_id: movieModel.id ?? 0)
+                .map { credits in
+                    let names = credits.cast.compactMap { $0.name }.joined(separator: ", ")
+                    return names.isEmpty ? "" : "출연: \(names)"
+                }
+                .catchAndReturn("")
+        } else {
+            return Observable.just("")
+        }
+    }
+    
+    private func fetchSimilarImages() -> Observable<[String]> {
+        if movieModel.media_type == "movie" {
+            return SimilarNetworkManager.shared.similarMovies(movie_id: movieModel.id ?? 0)
+                .map { $0.results.prefix(12).compactMap { $0.poster_path } }
+                .catchAndReturn([])
+        } else if movieModel.media_type == "tv" {
+            return SimilarNetworkManager.shared.similarSeries(series_id: String(movieModel.id ?? 0))
+                .map { $0.results.prefix(12).compactMap { $0.poster_path } }
+                .catchAndReturn([])
+        } else {
+            return Observable.just([])
+        }
     }
 }

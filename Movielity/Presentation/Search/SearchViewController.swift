@@ -62,7 +62,7 @@ final class SearchViewController: BaseViewController<SearchView> {
     
     
     func searchResultsViewControllerDidTapItem(_ movie: IntoDetailMovieModel) {
-        let detailVC = MediaDetailViewController(movieModel: movie)
+        let detailVC = DetailViewController(movieModel: movie)
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
@@ -157,7 +157,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let selectedMovie = trendingResults[indexPath.row]
         let movieModel = selectedMovie.toIntoDetailMovieModel()
         
-        let mediaDetailViewController = MediaDetailViewController(movieModel: movieModel)
+        let mediaDetailViewController = DetailViewController(movieModel: movieModel)
         navigationController?.pushViewController(mediaDetailViewController, animated: true)
     }
     
@@ -166,7 +166,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: SearchResultsDelegate {
     func searchResultsViewControllerDidSelectMovie(_ movie: IntoDetailMovieModel) {
-        let detailVC = MediaDetailViewController(movieModel: movie)
+        let detailVC = DetailViewController(movieModel: movie)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

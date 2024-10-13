@@ -30,7 +30,6 @@
 		019E043B2CB9650D008753E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E043A2CB9650D008753E9 /* DetailViewController.swift */; };
 		019E043D2CB9651A008753E9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E043C2CB9651A008753E9 /* DetailView.swift */; };
 		019E04442CBA613D008753E9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E04432CBA613D008753E9 /* DetailViewModel.swift */; };
-		019E04472CBB97D5008753E9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 019E04462CBB97D5008753E9 /* Kingfisher */; };
 		AA6522002CB5345800B56E01 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA6521FF2CB5345800B56E01 /* SnapKit */; };
 		AA6522062CB5352400B56E01 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA6522052CB5352400B56E01 /* RealmSwift */; };
 		AA6522072CB5353100B56E01 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA6522052CB5352400B56E01 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -305,13 +304,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		AA6522ED2CB68FF800B56E01 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		AA6523152CB7DD1500B56E01 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,7 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				B0DA47162CBA38A0009DC941 /* Components */,
-				AA6522ED2CB68FF800B56E01 /* Model */,
 				AA6522EA2CB68FBE00B56E01 /* Protocols */,
 				AA65231B2CB7DFC800B56E01 /* Extensions */,
 				AA6522E72CB68FA200B56E01 /* Resources */,

@@ -17,12 +17,9 @@ final class DetailViewController: BaseViewController<DetailView> {
     }
     
     private let viewModel: DetailViewModel
-    private let disposeBag = DisposeBag()
-    private let mediaType: MediaType
     
-    init(viewModel: DetailViewModel, mediaType: MediaType) {
-        self.viewModel = viewModel
-        self.mediaType = mediaType
+    init(movieModel: IntoDetailMovieModel) {
+        self.viewModel = DetailViewModel(movieModel: movieModel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,8 +33,7 @@ final class DetailViewController: BaseViewController<DetailView> {
     }
     
     private func bind() {
-        let input = DetailViewModel.Input(mediaType: Observable.just(mediaType))
-        let output = viewModel.transform(input: input)
+        let output = viewModel.transform()
         
         output.castNames
             .bind(to: rootView.castLabel.rx.text)
@@ -45,12 +41,12 @@ final class DetailViewController: BaseViewController<DetailView> {
         
         output.similarImages
             .bind(to: rootView.similarCollectionView.rx.items(cellIdentifier: "cell", cellType: UICollectionViewCell.self)) { index, imageUrl, cell in
-                let imageView: UIImageView
+                var imageView: UIImageView
                 if let existingImageView = cell.contentView.subviews.compactMap({ $0 as? UIImageView }).first {
                     imageView = existingImageView
                 } else {
                     imageView = UIImageView()
-                    imageView.contentMode = .scaleAspectFill
+                    imageView.contentMode = .scaleAspectFit
                     imageView.clipsToBounds = true
                     cell.contentView.addSubview(imageView)
                     imageView.snp.makeConstraints { make in
@@ -69,6 +65,25 @@ final class DetailViewController: BaseViewController<DetailView> {
             .bind(with: self, onNext: { owner, _ in
                 owner.rootView.updateCollectionViewHeight()
             })
+            .disposed(by: disposeBag)
+        
+        output.posterImage
+            .compactMap { URL(string: "https://image.tmdb.org/t/p/w500\($0)") }
+            .bind(with: self, onNext: { owner, url in
+                owner.rootView.posterImageView.kf.setImage(with: url)
+            })
+            .disposed(by: disposeBag)
+        
+        output.title
+            .bind(to: rootView.titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.vote
+            .bind(to: rootView.voteAverageLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.overview
+            .bind(to: rootView.overviewLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }
