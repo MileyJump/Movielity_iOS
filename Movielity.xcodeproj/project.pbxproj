@@ -47,7 +47,6 @@
 		AA65232F2CB7E45400B56E01 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA65232E2CB7E45400B56E01 /* BaseTableViewCell.swift */; };
 		AA6523312CB7E46600B56E01 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */; };
 		AAD8B0AC2CB8C38200ED45CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AAD8B0AB2CB8C38200ED45CC /* Kingfisher */; };
-		AAD8B0AF2CB9828600ED45CC /* MediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0AE2CB9828600ED45CC /* MediaDetailViewController.swift */; };
 		AAD8B0B12CBA6B2900ED45CC /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */; };
 		B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */; };
 		B037EBAE2CB7BA5F00229EAE /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */; };
@@ -62,7 +61,6 @@
 		B037EBCB2CB7FE2500229EAE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBCA2CB7FE2500229EAE /* DownloadViewController.swift */; };
 		B037EBCD2CB7FE5500229EAE /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBCC2CB7FE5500229EAE /* DownloadView.swift */; };
 		B037EBF42CB922D200229EAE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBF32CB922D200229EAE /* HomeViewModel.swift */; };
-		B037EBF72CB9264600229EAE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B037EBF62CB9264600229EAE /* Kingfisher */; };
 		B0DA47182CBA38F6009DC941 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA47172CBA38F6009DC941 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,7 +113,6 @@
 		AA65232B2CB7E43400B56E01 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		AA65232E2CB7E45400B56E01 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		AAD8B0AE2CB9828600ED45CC /* MediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewController.swift; sourceTree = "<group>"; };
 		AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
 		B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B037EBAD2CB7BA5F00229EAE /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -259,7 +256,6 @@
 				AA6523162CB7DD1800B56E01 /* SearchResults */,
 				AA6523152CB7DD1500B56E01 /* Search */,
 				B037EBC92CB7FDFD00229EAE /* Download */,
-				AAD8B0AD2CB9827000ED45CC /* MediaDetail */,
 				B037EBCE2CB7FF3000229EAE /* TabBar */,
 			);
 			path = Presentation;
@@ -363,14 +359,6 @@
 				AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		AAD8B0AD2CB9827000ED45CC /* MediaDetail */ = {
-			isa = PBXGroup;
-			children = (
-				AAD8B0AE2CB9828600ED45CC /* MediaDetailViewController.swift */,
-			);
-			path = MediaDetail;
 			sourceTree = "<group>";
 		};
 		B037EBC92CB7FDFD00229EAE /* Download */ = {
@@ -499,10 +487,9 @@
 				B037EBCB2CB7FE2500229EAE /* DownloadViewController.swift in Sources */,
 				AA6522F62CB79C4800B56E01 /* TrendingViewModel.swift in Sources */,
 				AAD8B0B12CBA6B2900ED45CC /* SearchResultsViewModel.swift in Sources */,
-				AAD8B0AF2CB9828600ED45CC /* MediaDetailViewController.swift in Sources */,
 				019E042A2CB95420008753E9 /* SimilarSeries.swift in Sources */,
 				AA6522F62CB79C4800B56E01 /* TrendingViewModel.swift in Sources */,
-				AA6522F62CB79C4800B56E01 /* SearchViewModel.swift in Sources */,
+				AA6522F62CB79C4800B56E01 /* TrendingViewModel.swift in Sources */,
 				B0DA47182CBA38F6009DC941 /* CustomButton.swift in Sources */,
 				AA6522DC2CB68DF400B56E01 /* SearchViewController.swift in Sources */,
 				AA6522DA2CB68DE400B56E01 /* SearchView.swift in Sources */,
