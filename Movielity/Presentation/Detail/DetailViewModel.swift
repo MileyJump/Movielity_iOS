@@ -29,7 +29,7 @@ final class DetailViewModel {
     func transform() -> Output {
         let castNames = fetchCastNames()
         let similarImages = fetchSimilarImages()
-        let posterImage = Observable.just(movieModel.poster_path ?? "")
+        let posterImage = Observable.just(movieModel.backdrop_path ?? "")
         let title = Observable.just(movieModel.title ?? "")
         let vote = Observable.just("평점: \(movieModel.vote_average ?? 0.0)")
         let overview = Observable.just(movieModel.overview ?? "")

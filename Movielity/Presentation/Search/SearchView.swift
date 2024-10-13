@@ -6,13 +6,12 @@
 //
 
 import UIKit
-
 import SnapKit
 
 final class SearchView: BaseView {
     
     let searchTableView = UITableView().then {
-        $0.register(MovieLikedTableViewCell.self, forCellReuseIdentifier: MovieLikedTableViewCell.identifier)
+        $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.backgroundColor = CustomAppColors.backgroundBlack.color
     }
     
