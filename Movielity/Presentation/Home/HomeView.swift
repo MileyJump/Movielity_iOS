@@ -26,7 +26,7 @@ final class HomeView: BaseView {
         $0.clipsToBounds = true
     }
     
-    let taglabel = UILabel().then {
+    let tagLabel = UILabel().then {
         $0.text = "응원하고픈 · 흥미진진 · 사극 · 전투 · 한국작품"
         $0.textAlignment = .center
         $0.textColor = .white
@@ -74,7 +74,7 @@ final class HomeView: BaseView {
         addSubview(contentScrollView)
         contentScrollView.addSubview(contentView)
         contentView.addSubview(posterImageView)
-        contentView.addSubview(taglabel)
+        contentView.addSubview(tagLabel)
         contentView.addSubview(playButton)
         contentView.addSubview(likedListButton)
         contentView.addSubview(nowHotMovieTitle)
@@ -107,7 +107,7 @@ final class HomeView: BaseView {
             make.width.equalTo(posterImageView.snp.width).multipliedBy(0.45)
         }
         
-        taglabel.snp.makeConstraints { make in
+        tagLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(posterImageView).inset(20)
             make.bottom.equalTo(playButton.snp.top).offset(-10)
         }
