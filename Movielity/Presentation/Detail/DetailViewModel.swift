@@ -16,6 +16,7 @@ final class DetailViewModel {
         let title: Observable<String>
         let vote: Observable<String>
         let overview: Observable<String>
+        let id: Observable<Int>
     }
     
     private let movieModel: IntoDetailMovieModel
@@ -33,6 +34,7 @@ final class DetailViewModel {
         let title = Observable.just(movieModel.title ?? "")
         let vote = Observable.just("평점: \(movieModel.vote_average ?? 0.0)")
         let overview = Observable.just(movieModel.overview ?? "")
+        let id = Observable.just(movieModel.id ?? 0)
         
         return Output(
             castNames: castNames,
@@ -40,7 +42,8 @@ final class DetailViewModel {
             posterImage: posterImage,
             title: title,
             vote: vote,
-            overview: overview
+            overview: overview,
+            id: id
         )
     }
     

@@ -11,7 +11,7 @@ import SnapKit
 final class DownloadView: BaseView {
     
     let searchTableView = UITableView().then {
-        $0.register(MovieLikedTableViewCell2.self, forCellReuseIdentifier: MovieLikedTableViewCell2.identifier)
+        $0.register(MovieLikedTableViewCell.self, forCellReuseIdentifier: MovieLikedTableViewCell.identifier)
         $0.backgroundColor = CustomAppColors.backgroundBlack.color
     }
     
