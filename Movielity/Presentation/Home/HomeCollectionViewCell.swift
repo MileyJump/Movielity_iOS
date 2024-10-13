@@ -6,23 +6,22 @@
 //
 
 import UIKit
+
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
+import Kingfisher
 
 final class HomeCollectionViewCell: BaseCollectionViewCell {
     
     private let posterImageView = UIImageView().then {
-        $0.backgroundColor = .gray
-        $0.image = UIImage(systemName: "star")
+        $0.layer.cornerRadius = 5
+        $0.clipsToBounds = true
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        posterImageView.layer.cornerRadius = 5
     }
     
     override func setupSubviews() {
@@ -32,6 +31,25 @@ final class HomeCollectionViewCell: BaseCollectionViewCell {
     override func setupLayout() {
         posterImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+    }
+    
+    func configure(with movie: TrendingMovieResponse) {
+        if let posterPath = movie.poster_path {
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
+            let url = URL(string: imageUrl)
+            posterImageView.kf.setImage(with: url)
+        }
+    }
+    
+    func seriesConfigure(with movie: TrendingSeriesResponse) {
+        if let posterPath = movie.poster_path {
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
+            let url = URL(string: imageUrl)
+            posterImageView.kf.setImage(with: url)
+                
         }
     }
 }
