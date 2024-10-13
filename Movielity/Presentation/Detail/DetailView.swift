@@ -15,8 +15,14 @@ final class DetailView: BaseView {
     let posterImageView = UIImageView()
     let titleLabel = UILabel()
     let voteAverageLabel = UILabel()
-    let playButton = UIButton()
-    let saveButton = UIButton()
+    let playButton = CustomButton(image: UIImage(systemName: "play.fill"),
+                                  title: "재생",
+                                  backgroundColor: .white,
+                                  tintColor: .black)
+    let saveButton = CustomButton(image: UIImage(systemName: "square.and.arrow.down"),
+                                  title: "저장",
+                                  backgroundColor: .darkGray,
+                                  tintColor: .white)
     let overviewLabel = UILabel()
     let castLabel = UILabel()
     let similarLabel = UILabel()
@@ -26,6 +32,7 @@ final class DetailView: BaseView {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 8
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 48) / 3, height: 180)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = false
@@ -60,12 +67,6 @@ final class DetailView: BaseView {
         voteAverageLabel.text = "8.8"
         voteAverageLabel.textColor = .white
         voteAverageLabel.font = .systemFont(ofSize: 13)
-        
-        playButton.setTitle("재생", for: .normal)
-        playButton.backgroundColor = .blue
-        
-        saveButton.setTitle("저장", for: .normal)
-        saveButton.backgroundColor = .blue
         
         overviewLabel.text = "When you live under the same roof, a family-life bond inevitably develops. That is certainly the case for the inhabitants of Zhan Ke Zhi Jia, a hostel. Xie Ke Zhan, a graduate student who owns the hostel, cares about all of his friends who live there and tries"
         overviewLabel.textColor = .gray
@@ -112,13 +113,13 @@ final class DetailView: BaseView {
         playButton.snp.makeConstraints { make in
             make.top.equalTo(voteAverageLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(44)
+            make.height.equalTo(35)
         }
         
         saveButton.snp.makeConstraints { make in
             make.top.equalTo(playButton.snp.bottom).offset(16)
             make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(44)
+            make.height.equalTo(35)
         }
         
         overviewLabel.snp.makeConstraints { make in
@@ -139,6 +140,7 @@ final class DetailView: BaseView {
         similarCollectionView.snp.makeConstraints { make in
             make.top.equalTo(similarLabel.snp.bottom).offset(15)
             make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(0)
             make.bottom.equalToSuperview().offset(-20)
         }
     }
@@ -147,11 +149,10 @@ final class DetailView: BaseView {
         similarCollectionView.layoutIfNeeded()
         let contentHeight = similarCollectionView.collectionViewLayout.collectionViewContentSize.height
         
-        similarCollectionView.snp.remakeConstraints { make in
-            make.top.equalTo(similarLabel.snp.bottom).offset(15)
-            make.horizontalEdges.equalToSuperview().inset(16)
+        similarCollectionView.snp.updateConstraints { make in
             make.height.equalTo(contentHeight)
-            make.bottom.equalToSuperview().offset(-20)
         }
+        
+        layoutIfNeeded()
     }
 }
