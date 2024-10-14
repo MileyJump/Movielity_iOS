@@ -16,11 +16,14 @@ final class DetailViewModel {
         let title: Observable<String>
         let vote: Observable<String>
         let overview: Observable<String>
+        let showSaveAlert: Observable<Bool>
     }
     
     private let movieModel: IntoDetailMovieModel
     
     private let disposeBag = DisposeBag()
+    
+    private let showSaveAlertSubject = PublishSubject<Bool>()
     
     init(movieModel: IntoDetailMovieModel) {
         self.movieModel = movieModel
@@ -40,7 +43,8 @@ final class DetailViewModel {
             posterImage: posterImage,
             title: title,
             vote: vote,
-            overview: overview
+            overview: overview,
+            showSaveAlert: showSaveAlertSubject.asObservable()
         )
     }
     
@@ -76,5 +80,9 @@ final class DetailViewModel {
         } else {
             return Observable.just([])
         }
+    }
+    
+    func triggerSaveAlert() {
+        showSaveAlertSubject.onNext(true)
     }
 }

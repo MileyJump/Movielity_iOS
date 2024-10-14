@@ -85,5 +85,36 @@ final class DetailViewController: BaseViewController<DetailView> {
         output.overview
             .bind(to: rootView.overviewLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        rootView.saveButton.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.viewModel.triggerSaveAlert()
+            }
+            .disposed(by: disposeBag)
+        
+        output.showSaveAlert
+            .filter { $0 }
+            .bind(with: self) { owner, _ in
+                owner.showSaveAlertView()
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func showSaveAlertView() {
+        let alertView = MovielityAlertView()
+        
+        view.addSubview(alertView)
+        
+        alertView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(20)
+            make.height.equalTo(100)
+        }
+        
+        alertView.confirmButton.rx.tap
+            .bind(with: self) { owner, _ in
+                alertView.removeFromSuperview()
+            }
+            .disposed(by: disposeBag)
     }
 }
