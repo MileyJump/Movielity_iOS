@@ -14,11 +14,18 @@ final class DownloadViewController: BaseViewController<DownloadView> {
     private var movies: Results<SaveRealmMedia>!
     private let realm = try! Realm()
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchMovies()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "검색"
         setupDelegates()
-        fetchMovies()
+       // fetchMovies()
     }
 
     private func fetchMovies() {
