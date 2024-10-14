@@ -23,7 +23,7 @@ final class DownloadViewController: BaseViewController<DownloadView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "검색"
+        title = "내가 찜한 리스트"
         setupDelegates()
        // fetchMovies()
     }

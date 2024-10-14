@@ -6,13 +6,15 @@
 //
 
 import UIKit
+
 import SnapKit
+import Kingfisher
 import Then
 
 final class MovieLikedTableViewCell: UITableViewCell {
 
     private let posterImageView = UIImageView().then {
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleAspectFill
         $0.image = UIImage(systemName: "film")
         $0.backgroundColor = CustomAppColors.darkGray1B1B1E.color
         $0.clipsToBounds = true
@@ -35,7 +37,11 @@ final class MovieLikedTableViewCell: UITableViewCell {
         setupSubviews()
         setupLayout()
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setupSubviews() {
         contentView.addSubview(posterImageView)
         contentView.addSubview(titleLabel)
@@ -65,10 +71,13 @@ final class MovieLikedTableViewCell: UITableViewCell {
 
     func configureWithMovie(movie: SaveRealmMedia) {
         titleLabel.text = movie.title
+        if !movie.posterImagePath.isEmpty {
+            let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + movie.posterImagePath)
+            posterImageView.kf.setImage(with: imageUrl, placeholder: UIImage(systemName: "film"))
+        } else {
+            posterImageView.image = UIImage(systemName: "film")
+        }
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
