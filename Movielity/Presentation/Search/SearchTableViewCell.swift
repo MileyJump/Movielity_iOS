@@ -1,5 +1,5 @@
 //
-//  MovieLikedTableViewCell.swift
+//  SearchTableViewCell.swift
 //  Movielity
 //
 //  Created by 이윤지 on 10/9/24.
@@ -10,7 +10,7 @@ import SnapKit
 import Then
 import Kingfisher
 
-final class MovieLikedTableViewCell: BaseTableViewCell {
+final class SearchTableViewCell: BaseTableViewCell {
     
     private let posterImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
