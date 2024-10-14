@@ -39,7 +39,7 @@ final class HomeView: BaseView {
                                           tintColor: CustomAppColors.backgroundBlack.color)
     
     
-    private let likedListButton = CustomButton(image: UIImage(systemName: "plus"),
+     let likedListButton = CustomButton(image: UIImage(systemName: "plus"),
                                                title: "내가 찜한 리스트",
                                                backgroundColor: CustomAppColors.darkGray1B1B1E.color,
                                                tintColor: CustomAppColors.white.color)

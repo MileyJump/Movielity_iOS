@@ -37,7 +37,7 @@ final class HomeCollectionViewCell: BaseCollectionViewCell {
     func configure(with movie: TrendingMovieResponse) {
         if let posterPath = movie.poster_path {
             
-            let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
+            let imageUrl = "\(APIUrl.photoBaseURL)\(posterPath)"
             let url = URL(string: imageUrl)
             posterImageView.kf.setImage(with: url)
         }
@@ -46,7 +46,7 @@ final class HomeCollectionViewCell: BaseCollectionViewCell {
     func seriesConfigure(with movie: TrendingSeriesResponse) {
         if let posterPath = movie.poster_path {
             
-            let imageUrl = "https://image.tmdb.org/t/p/w500\(posterPath)"
+            let imageUrl = "\(APIUrl.photoBaseURL)\(posterPath)"
             let url = URL(string: imageUrl)
             posterImageView.kf.setImage(with: url)
                 

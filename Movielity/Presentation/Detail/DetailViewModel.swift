@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 final class DetailViewModel {
     struct Output {
@@ -16,27 +17,27 @@ final class DetailViewModel {
         let title: Observable<String>
         let vote: Observable<String>
         let overview: Observable<String>
-        let showSaveAlert: Observable<Bool>
+        let showSaveAlert: Observable<String>
     }
     
     private let movieModel: IntoDetailMovieModel
-    
     private let disposeBag = DisposeBag()
-    
-    private let showSaveAlertSubject = PublishSubject<Bool>()
+    private let realm = try! Realm()
+
+    private let showSaveAlertSubject = PublishSubject<String>()
     
     init(movieModel: IntoDetailMovieModel) {
         self.movieModel = movieModel
     }
-    
+
     func transform() -> Output {
         let castNames = fetchCastNames()
         let similarImages = fetchSimilarImages()
-        let posterImage = Observable.just(movieModel.poster_path ?? "")
+        let posterImage = Observable.just(movieModel.backdrop_path ?? "")
         let title = Observable.just(movieModel.title ?? "")
         let vote = Observable.just("평점: \(movieModel.vote_average ?? 0.0)")
         let overview = Observable.just(movieModel.overview ?? "")
-        
+
         return Output(
             castNames: castNames,
             similarImages: similarImages,
@@ -47,7 +48,7 @@ final class DetailViewModel {
             showSaveAlert: showSaveAlertSubject.asObservable()
         )
     }
-    
+
     private func fetchCastNames() -> Observable<String> {
         if movieModel.media_type == "movie" {
             return CreditsNetworkManager.shared.creditsMovies(movie_id: movieModel.id ?? 0)
@@ -67,6 +68,7 @@ final class DetailViewModel {
             return Observable.just("")
         }
     }
+
     
     private func fetchSimilarImages() -> Observable<[String]> {
         if movieModel.media_type == "movie" {
@@ -81,8 +83,23 @@ final class DetailViewModel {
             return Observable.just([])
         }
     }
+
     
     func triggerSaveAlert() {
-        showSaveAlertSubject.onNext(true)
+        let existingMedia = realm.object(ofType: SaveRealmMedia.self, forPrimaryKey: movieModel.id)
+        
+        if existingMedia != nil {
+            showSaveAlertSubject.onNext("이미 저장되어 있습니다!")
+        } else {
+            let newMedia = SaveRealmMedia()
+            newMedia.id = movieModel.id ?? 0
+            newMedia.title = movieModel.title ?? ""
+            newMedia.posterImagePath = movieModel.poster_path ?? ""
+            
+            try! realm.write {
+                realm.add(newMedia)
+            }
+            showSaveAlertSubject.onNext("미디어를 저장했습니다! :)") 
+        }
     }
 }

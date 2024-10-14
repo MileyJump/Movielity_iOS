@@ -63,7 +63,7 @@ extension SearchResultsViewController: UICollectionViewDelegate, UICollectionVie
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let selectedSearchResultMovie = movie[indexPath.row]
-        print("선택된 영화: \(selectedSearchResultMovie)")
+       // print("선택된 영화: \(selectedSearchResultMovie)")
         
         let movieModel = selectedSearchResultMovie.toIntoMovieModel()
         delegate?.searchResultsViewControllerDidSelectMovie(movieModel)

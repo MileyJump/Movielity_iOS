@@ -9,4 +9,5 @@ import Foundation
 
 struct APIUrl {
     static let baseURL = "https://api.themoviedb.org"
+    static let photoBaseURL = "https://image.tmdb.org/t/p/w500"
 }

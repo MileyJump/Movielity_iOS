@@ -24,6 +24,7 @@ final class HomeViewModel {
     // 랜덤 포스터 이미지를 방출할 Observable
     let randomPosterImageURL = PublishSubject<String?>()
     let genreText = PublishSubject<String>()
+    let selectedContent = BehaviorSubject<Any?>(value: nil)
     
     init() {
         setupBinding()
@@ -51,31 +52,37 @@ final class HomeViewModel {
         
         // 영화와 시리즈 데이터를 결합하고 랜덤 포스터 이미지를 선택
         Observable.combineLatest(trendingMovies, trendingSeries)
-            .map { movies, series in
-                let moviePosters = movies.compactMap { $0.poster_path }
-                let seriesPosters = series.compactMap { $0.poster_path }
-                let allPosters = moviePosters + seriesPosters
-                let randomPoster = allPosters.randomElement()
-                if let randomPoster {
-                    // 영화 혹은 시리즈에서 해당 포스터에 맞는 작품 찾기
-                    if let movie = movies.first(where: { $0.poster_path == randomPoster }) {
-                        // 영화 장르 불러오기
-                        if let id = movie.genre_ids {
-                            print("영화 장르 ID : \(id)")
-                            self.fetchGenre(forMovieId: id)
-                        }
-                    } else if let series = series.first(where: { $0.poster_path == randomPoster }) {
-                        // 시리즈 장르 불러오기
-                        if let id = series.genre_ids {
-                            print("시리즈 장르 ID: \(id)")
-                            self.fetchGenre(forSeriesId: id)
-                        }
-                    }
-                }
-                return randomPoster
-            }
-            .bind(to: randomPosterImageURL)
-            .disposed(by: disposeBag)
+               .map { movies, series in
+                   let moviePosters = movies.compactMap { $0.poster_path }
+                   let seriesPosters = series.compactMap { $0.poster_path }
+                   let allPosters = moviePosters + seriesPosters
+                   let randomPoster = allPosters.randomElement()
+
+                   if let randomPoster {
+                       if let movie = movies.first(where: { $0.poster_path == randomPoster }) {
+                           // 선택된 영화 저장
+                           self.selectedContent.onNext(movie)
+                         //  print("선택된 영화: \(movie.title)")
+
+                           if let id = movie.genre_ids {
+                             //  print("영화 장르 ID: \(id)")
+                               self.fetchGenre(forMovieId: id)
+                           }
+                       } else if let series = series.first(where: { $0.poster_path == randomPoster }) {
+                           // 선택된 시리즈 저장
+                           self.selectedContent.onNext(series)
+                          // print("선택된 시리즈: \(series.name)")
+
+                           if let id = series.genre_ids {
+                           //    print("시리즈 장르 ID: \(id)")
+                               self.fetchGenre(forSeriesId: id)
+                           }
+                       }
+                   }
+                   return randomPoster
+               }
+               .bind(to: randomPosterImageURL)
+               .disposed(by: disposeBag)
     }
     
     // 영화의 장르를 불러오는 함수

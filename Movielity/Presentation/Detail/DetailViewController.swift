@@ -12,12 +12,9 @@ import Kingfisher
 import SnapKit
 
 final class DetailViewController: BaseViewController<DetailView> {
-    deinit {
-        print("deinit \(self)")
-    }
-    
+
     private let viewModel: DetailViewModel
-    
+
     init(movieModel: IntoDetailMovieModel) {
         self.viewModel = DetailViewModel(movieModel: movieModel)
         super.init(nibName: nil, bundle: nil)
@@ -27,11 +24,12 @@ final class DetailViewController: BaseViewController<DetailView> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
     }
-    
+
     private func bind() {
         let output = viewModel.transform()
         
@@ -54,7 +52,7 @@ final class DetailViewController: BaseViewController<DetailView> {
                     }
                 }
                 
-                let fullImageUrl = "https://image.tmdb.org/t/p/w500\(imageUrl)"
+                let fullImageUrl = "\(APIUrl.photoBaseURL)\(imageUrl)"
                 if let url = URL(string: fullImageUrl) {
                     imageView.kf.setImage(with: url)
                 }
@@ -66,9 +64,9 @@ final class DetailViewController: BaseViewController<DetailView> {
                 owner.rootView.updateCollectionViewHeight()
             })
             .disposed(by: disposeBag)
-        
+
         output.posterImage
-            .compactMap { URL(string: "https://image.tmdb.org/t/p/w500\($0)") }
+            .compactMap { URL(string: "\(APIUrl.photoBaseURL)\($0)") }
             .bind(with: self, onNext: { owner, url in
                 owner.rootView.posterImageView.kf.setImage(with: url)
             })
@@ -85,7 +83,7 @@ final class DetailViewController: BaseViewController<DetailView> {
         output.overview
             .bind(to: rootView.overviewLabel.rx.text)
             .disposed(by: disposeBag)
-        
+
         rootView.saveButton.rx.tap
             .bind(with: self) { owner, _ in
                 owner.viewModel.triggerSaveAlert()
@@ -93,23 +91,16 @@ final class DetailViewController: BaseViewController<DetailView> {
             .disposed(by: disposeBag)
         
         output.showSaveAlert
-            .filter { $0 }
-            .bind(with: self) { owner, _ in
-                owner.showSaveAlertView()
+            .bind(with: self) { owner, message in
+                owner.showSaveAlertView(with: message)
             }
             .disposed(by: disposeBag)
     }
-    
-    private func showSaveAlertView() {
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = .black.withAlphaComponent(0.6)
-        view.addSubview(backgroundView)
-        
-        backgroundView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
+
+    private func showSaveAlertView(with message: String) {
         let alertView = MovielityAlertView()
+        alertView.titleLabel.text = message
+        
         view.addSubview(alertView)
         
         alertView.snp.makeConstraints { make in
@@ -121,7 +112,6 @@ final class DetailViewController: BaseViewController<DetailView> {
         alertView.confirmButton.rx.tap
             .bind(with: self) { owner, _ in
                 alertView.removeFromSuperview()
-                backgroundView.removeFromSuperview()
             }
             .disposed(by: disposeBag)
     }

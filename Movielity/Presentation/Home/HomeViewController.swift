@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Kingfisher
+import RealmSwift
 
 final class HomeViewController: BaseViewController<HomeView> {
     
@@ -23,7 +24,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.fetchTrendingMovies.onNext(())
         viewModel.fetchTrendingSeries.onNext(())
     }
-    
     
     private func setupBinding() {
         
@@ -71,6 +71,15 @@ final class HomeViewController: BaseViewController<HomeView> {
                 let seriesModel = series.toIntoDetailSerieseModel()
                 let detailVC = DetailViewController(movieModel: seriesModel)
                 owner.navigationController?.pushViewController(detailVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+
+        rootView.likedListButton.rx.tap
+            .withLatestFrom(viewModel.selectedContent)
+            .compactMap { $0 as? TrendingMovieResponse }
+            .bind(with: self) { owner, movie in
+                owner.handleLikeButtonTap(for: movie)
             }
             .disposed(by: disposeBag)
     }
@@ -121,4 +130,45 @@ final class HomeViewController: BaseViewController<HomeView> {
     private func tvButtonTapped() {
         print("tv Button Tapped")
     }
+}
+
+
+extension HomeViewController {
+    private func handleLikeButtonTap(for movie: TrendingMovieResponse) {
+        let realm = try! Realm()
+        let alertView = MovielityAlertView()
+        
+        if realm.object(ofType: SaveRealmMedia.self, forPrimaryKey: movie.id) != nil {
+            alertView.titleLabel.text = "이미 저장되었습니다!"
+        } else {
+            let media = SaveRealmMedia()
+            media.id = movie.id ?? 0
+            media.title = movie.title ?? ""
+            media.posterImagePath = movie.poster_path ?? ""
+
+            try! realm.write {
+                realm.add(media)
+            }
+            alertView.titleLabel.text = "미디어를 저장했습니다! :)"
+        }
+    
+        showMovielityAlert(alertView)
+    }
+
+    private func showMovielityAlert(_ alertView: MovielityAlertView) {
+        alertView.confirmButton.rx.tap
+            .bind(with: self) { owner, _ in
+                alertView.removeFromSuperview()
+            }
+            .disposed(by: disposeBag)
+        
+        // 화면에 AlertView 추가
+        view.addSubview(alertView)
+        alertView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(250)
+            make.height.equalTo(150)
+        }
+    }
+    
 }
