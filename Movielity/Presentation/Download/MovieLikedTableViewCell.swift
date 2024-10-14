@@ -7,17 +7,12 @@
 
 import UIKit
 
-<<<<<<<< HEAD:Movielity/Presentation/Download/MovieLikedTableViewCell.swift
 import SnapKit
 import Kingfisher
 import Then
 
 final class MovieLikedTableViewCell: UITableViewCell {
 
-========
-final class SearchTableViewCell: BaseTableViewCell {
-    
->>>>>>>> a03fe6041d2060c44a947221a2943e63c3d95f4f:Movielity/Presentation/Search/SearchTableViewCell.swift
     private let posterImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.image = UIImage(systemName: "film")

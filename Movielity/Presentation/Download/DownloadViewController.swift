@@ -25,7 +25,6 @@ final class DownloadViewController: BaseViewController<DownloadView> {
         super.viewDidLoad()
         title = "내가 찜한 리스트"
         setupDelegates()
-       // fetchMovies()
     }
 
     private func fetchMovies() {
