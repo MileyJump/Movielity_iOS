@@ -16,6 +16,9 @@ final class HomeViewController: BaseViewController<HomeView> {
     private let viewModel = HomeViewModel()
     //private let disposeBag = DisposeBag()
     
+    //    private var trendingMovieResults: TrendingMovieResponse?
+    //    private var trendingSeriesResults: TrendingSeriesResponse?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBinding()
@@ -31,6 +34,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         // 영화 데이터를 컬렉션 뷰에 바인딩
         viewModel.trendingMovies
             .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
+                //                self.trendingMovieResults = movie
                 cell.configure(with: movie)
             }
             .disposed(by: disposeBag)
@@ -39,6 +43,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.trendingSeries
             .bind(to: rootView.nowHotSeriesCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) {
                 row, series, cell in
+                //                self.trendingSeriesResults = series
                 cell.seriesConfigure(with: series)
             }
             .disposed(by: disposeBag)
@@ -56,14 +61,35 @@ final class HomeViewController: BaseViewController<HomeView> {
                 owner.rootView.tagLabel.text = genre
             })
             .disposed(by: disposeBag)
+        
+        
+        // 지금 뜨는 영화 셀 선택 시 화면 전환
+        rootView.nowHotMovieCollectionView.rx.modelSelected(TrendingMovieResponse.self)
+            .bind(with: self) { owner, movie in
+                let movieModel = movie.toIntoDetailMovieModel()
+                let detailVC = DetailViewController(movieModel: movieModel)
+                owner.navigationController?.pushViewController(detailVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        
+        // 지금 뜨는 TV시리즈 셀 선택 시 화면 전환
+        rootView.nowHotSeriesCollectionView.rx.modelSelected(TrendingSeriesResponse.self)
+            .bind(with: self) { owner, series in
+                let seriesModel = series.toIntoDetailSerieseModel()
+                let detailVC = DetailViewController(movieModel: seriesModel)
+                owner.navigationController?.pushViewController(detailVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
     }
     
     private func setPosterImage(from path: String?) {
-          guard let path = path else { return }
-          let imageUrl = "https://image.tmdb.org/t/p/w500\(path)"
-          let url = URL(string: imageUrl)
-          rootView.posterImageView.kf.setImage(with: url)
-      }
+        guard let path = path else { return }
+        let imageUrl = "https://image.tmdb.org/t/p/w500\(path)"
+        let url = URL(string: imageUrl)
+        rootView.posterImageView.kf.setImage(with: url)
+    }
     
     override func setupUI() {
         rootView.backgroundColor = CustomAppColors.backgroundBlack.color
@@ -86,7 +112,7 @@ final class HomeViewController: BaseViewController<HomeView> {
                 owner.searchButtonTapped()
             }
             .disposed(by: disposeBag)
-
+        
         tv.rx.tap
             .bind(with: self) { owner, _ in
                 owner.tvButtonTapped()
