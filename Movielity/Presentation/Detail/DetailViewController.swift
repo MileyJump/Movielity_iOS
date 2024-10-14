@@ -101,8 +101,15 @@ final class DetailViewController: BaseViewController<DetailView> {
     }
     
     private func showSaveAlertView() {
-        let alertView = MovielityAlertView()
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .black.withAlphaComponent(0.6)
+        view.addSubview(backgroundView)
         
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        let alertView = MovielityAlertView()
         view.addSubview(alertView)
         
         alertView.snp.makeConstraints { make in
@@ -114,6 +121,7 @@ final class DetailViewController: BaseViewController<DetailView> {
         alertView.confirmButton.rx.tap
             .bind(with: self) { owner, _ in
                 alertView.removeFromSuperview()
+                backgroundView.removeFromSuperview()
             }
             .disposed(by: disposeBag)
     }
