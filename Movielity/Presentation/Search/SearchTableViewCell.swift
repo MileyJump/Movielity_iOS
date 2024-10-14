@@ -1,5 +1,5 @@
 //
-//  MovieLikedTableViewCell.swift
+//  SearchTableViewCell.swift
 //  Movielity
 //
 //  Created by 이윤지 on 10/9/24.
