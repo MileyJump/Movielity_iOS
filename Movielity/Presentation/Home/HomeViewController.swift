@@ -30,7 +30,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         // 영화 데이터를 컬렉션 뷰에 바인딩
         viewModel.trendingMovies
             .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
-                //                self.trendingMovieResults = movie
                 cell.configure(with: movie)
             }
             .disposed(by: disposeBag)
@@ -39,7 +38,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.trendingSeries
             .bind(to: rootView.nowHotSeriesCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) {
                 row, series, cell in
-                //                self.trendingSeriesResults = series
                 cell.seriesConfigure(with: series)
             }
             .disposed(by: disposeBag)
@@ -85,6 +83,7 @@ final class HomeViewController: BaseViewController<HomeView> {
     }
     
     override func setupUI() {
+        navigationItem.backButtonTitle = ""
         rootView.backgroundColor = CustomAppColors.backgroundBlack.color
         
         rootView.nowHotMovieCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
@@ -100,6 +99,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         navigationItem.leftBarButtonItem = logoImage
         
         navigationController?.navigationBar.tintColor = .white
+        
         
         search.rx.tap
             .bind(with: self) { owner, _ in

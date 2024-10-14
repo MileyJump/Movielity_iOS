@@ -99,7 +99,6 @@ final class HomeViewModel {
                 let genreNames = genreResponse.genres
                     .filter { ids.contains($0.id) } // 주어진 IDs에 해당하는 장르만 필터링
                     .map { $0.name }
-                print("===")
                 print(genreNames)
                 return genreNames.isEmpty ? "Unknown" : genreNames.joined(separator: " · ") // 장르 이름들을 " · "로 구분하여 결합
             }

@@ -25,10 +25,7 @@ final class MovielityTabBarController: UITabBarController {
         
         setViewControllers(viewControllers, animated: true)
         
-        // 선택된 탭의 아이콘과 텍스트 색상을 화이트로 설정
         tabBar.tintColor = .white
-        
-        // 비선택 상태일 때의 아이콘 및 텍스트 색상 설정 (선택 사항)
         tabBar.unselectedItemTintColor = .gray
         
         tabBar.barTintColor = CustomAppColors.darkGray1B1B1E.color
