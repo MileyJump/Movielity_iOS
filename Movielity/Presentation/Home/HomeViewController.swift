@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Kingfisher
+import RealmSwift
 
 final class HomeViewController: BaseViewController<HomeView> {
     
@@ -24,17 +25,16 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.fetchTrendingSeries.onNext(())
     }
     
-    
     private func setupBinding() {
         
-       
+        // 영화 데이터를 컬렉션 뷰에 바인딩
         viewModel.trendingMovies
             .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
                 cell.configure(with: movie)
             }
             .disposed(by: disposeBag)
         
-       
+        // 시리즈 데이터를 컬렉션 뷰에 바인딩
         viewModel.trendingSeries
             .bind(to: rootView.nowHotSeriesCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) {
                 row, series, cell in
@@ -42,14 +42,14 @@ final class HomeViewController: BaseViewController<HomeView> {
             }
             .disposed(by: disposeBag)
         
-       
+        // 랜덤 포스터 이미지를 구독하여 `posterImageView`에 설정
         viewModel.randomPosterImageURL
             .bind(with: self, onNext: { owner, posterPath in
                 owner.setPosterImage(from: posterPath)
             })
             .disposed(by: disposeBag)
         
-       
+        // 장르 데이터를 구독하여 TagLabel에 설정
         viewModel.genreText
             .bind(with: self, onNext: { owner, genre in
                 owner.rootView.tagLabel.text = genre
@@ -73,14 +73,23 @@ final class HomeViewController: BaseViewController<HomeView> {
                 owner.navigationController?.pushViewController(detailVC, animated: true)
             }
             .disposed(by: disposeBag)
+        
+
+        rootView.likedListButton.rx.tap
+            .withLatestFrom(viewModel.selectedContent)
+            .compactMap { $0 as? TrendingMovieResponse }
+            .bind(with: self) { owner, movie in
+                owner.handleLikeButtonTap(for: movie)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setPosterImage(from path: String?) {
-          guard let posterPath = path else { return }
-        let imageUrl = "\(APIUrl.photoBaseURL)\(posterPath)"
-          let url = URL(string: imageUrl)
-          rootView.posterImageView.kf.setImage(with: url)
-      }
+        guard let path = path else { return }
+        let imageUrl = "https://image.tmdb.org/t/p/w500\(path)"
+        let url = URL(string: imageUrl)
+        rootView.posterImageView.kf.setImage(with: url)
+    }
     
     override func setupUI() {
         navigationItem.backButtonTitle = ""
@@ -121,4 +130,45 @@ final class HomeViewController: BaseViewController<HomeView> {
     private func tvButtonTapped() {
         print("tv Button Tapped")
     }
+}
+
+
+extension HomeViewController {
+    private func handleLikeButtonTap(for movie: TrendingMovieResponse) {
+        let realm = try! Realm()
+        let alertView = MovielityAlertView()
+        
+        if realm.object(ofType: SaveRealmMedia.self, forPrimaryKey: movie.id) != nil {
+            alertView.titleLabel.text = "이미 저장되었습니다!"
+        } else {
+            let media = SaveRealmMedia()
+            media.id = movie.id ?? 0
+            media.title = movie.title ?? ""
+            media.posterImagePath = movie.poster_path ?? ""
+
+            try! realm.write {
+                realm.add(media)
+            }
+            alertView.titleLabel.text = "미디어를 저장했습니다! :)"
+        }
+    
+        showMovielityAlert(alertView)
+    }
+
+    private func showMovielityAlert(_ alertView: MovielityAlertView) {
+        alertView.confirmButton.rx.tap
+            .bind(with: self) { owner, _ in
+                alertView.removeFromSuperview()
+            }
+            .disposed(by: disposeBag)
+        
+        // 화면에 AlertView 추가
+        view.addSubview(alertView)
+        alertView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(250)
+            make.height.equalTo(150)
+        }
+    }
+    
 }
