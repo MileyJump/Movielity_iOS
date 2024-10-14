@@ -85,7 +85,7 @@ extension DownloadViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("영화 선택됨: \(movies[indexPath.row].title)")
+       // print("영화 선택됨: \(movies[indexPath.row].title)")
     }
 }
 

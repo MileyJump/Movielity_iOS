@@ -54,7 +54,6 @@
 		AAD8B0B12CBA6B2900ED45CC /* SearchResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */; };
 		AAD8B0B32CBBB45100ED45CC /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B22CBBB45100ED45CC /* ViewModelType.swift */; };
 		AAD8B0B52CBBB46300ED45CC /* SearchResultsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B42CBBB46300ED45CC /* SearchResultsDelegate.swift */; };
-		AAD8B0B82CBC2E4F00ED45CC /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B72CBC2E4F00ED45CC /* CustomAlertViewController.swift */; };
 		AAD8B0BA2CBC3B3500ED45CC /* MovieLikedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0B92CBC3B3500ED45CC /* MovieLikedTableViewCell.swift */; };
 		AAD8B0BD2CBC3F6500ED45CC /* SaveRealmMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B0BC2CBC3F6500ED45CC /* SaveRealmMedia.swift */; };
 		B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */; };
@@ -129,7 +128,6 @@
 		AAD8B0B02CBA6B2900ED45CC /* SearchResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewModel.swift; sourceTree = "<group>"; };
 		AAD8B0B22CBBB45100ED45CC /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		AAD8B0B42CBBB46300ED45CC /* SearchResultsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDelegate.swift; sourceTree = "<group>"; };
-		AAD8B0B72CBC2E4F00ED45CC /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		AAD8B0B92CBC3B3500ED45CC /* MovieLikedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieLikedTableViewCell.swift; sourceTree = "<group>"; };
 		AAD8B0BC2CBC3F6500ED45CC /* SaveRealmMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRealmMedia.swift; sourceTree = "<group>"; };
 		B037EBAB2CB7BA4E00229EAE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 				AA6523152CB7DD1500B56E01 /* Search */,
 				B037EBC92CB7FDFD00229EAE /* Download */,
 				019E04392CB964ED008753E9 /* Detail */,
-				AAD8B0B62CBC2E2F00ED45CC /* CustomAlert */,
 				B037EBCE2CB7FF3000229EAE /* TabBar */,
 			);
 			path = Presentation;
@@ -384,14 +381,6 @@
 				AA6523302CB7E46600B56E01 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		AAD8B0B62CBC2E2F00ED45CC /* CustomAlert */ = {
-			isa = PBXGroup;
-			children = (
-				AAD8B0B72CBC2E4F00ED45CC /* CustomAlertViewController.swift */,
-			);
-			path = CustomAlert;
 			sourceTree = "<group>";
 		};
 		AAD8B0BB2CBC3F4E00ED45CC /* Realm */ = {
@@ -540,7 +529,6 @@
 				AA6522DA2CB68DE400B56E01 /* SearchView.swift in Sources */,
 				AA6522E12CB68F2500B56E01 /* SearchResultsView.swift in Sources */,
 				019E04442CBA613D008753E9 /* DetailViewModel.swift in Sources */,
-				AAD8B0B82CBC2E4F00ED45CC /* CustomAlertViewController.swift in Sources */,
 				AA65232F2CB7E45400B56E01 /* BaseTableViewCell.swift in Sources */,
 				AA6522E62CB68F8E00B56E01 /* ResultItemCollectionViewCell.swift in Sources */,
 				019E043D2CB9651A008753E9 /* DetailView.swift in Sources */,

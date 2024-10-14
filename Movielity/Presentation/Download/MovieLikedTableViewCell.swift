@@ -72,7 +72,7 @@ final class MovieLikedTableViewCell: UITableViewCell {
     func configureWithMovie(movie: SaveRealmMedia) {
         titleLabel.text = movie.title
         if !movie.posterImagePath.isEmpty {
-            let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + movie.posterImagePath)
+            let imageUrl = URL(string: "\(APIUrl.photoBaseURL)" + movie.posterImagePath)
             posterImageView.kf.setImage(with: imageUrl, placeholder: UIImage(systemName: "film"))
         } else {
             posterImageView.image = UIImage(systemName: "film")

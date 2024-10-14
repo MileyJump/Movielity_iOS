@@ -14,7 +14,6 @@ import Kingfisher
 final class HomeViewController: BaseViewController<HomeView> {
     
     private let viewModel = HomeViewModel()
-    //private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +27,14 @@ final class HomeViewController: BaseViewController<HomeView> {
     
     private func setupBinding() {
         
-        // 영화 데이터를 컬렉션 뷰에 바인딩
+       
         viewModel.trendingMovies
             .bind(to: rootView.nowHotMovieCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) { row, movie, cell in
                 cell.configure(with: movie)
             }
             .disposed(by: disposeBag)
         
-        // 시리즈 데이터를 컬렉션 뷰에 바인딩
+       
         viewModel.trendingSeries
             .bind(to: rootView.nowHotSeriesCollectionView.rx.items(cellIdentifier: HomeCollectionViewCell.identifier, cellType: HomeCollectionViewCell.self)) {
                 row, series, cell in
@@ -43,14 +42,14 @@ final class HomeViewController: BaseViewController<HomeView> {
             }
             .disposed(by: disposeBag)
         
-        // 랜덤 포스터 이미지를 구독하여 `posterImageView`에 설정
+       
         viewModel.randomPosterImageURL
             .bind(with: self, onNext: { owner, posterPath in
                 owner.setPosterImage(from: posterPath)
             })
             .disposed(by: disposeBag)
         
-        // 장르 데이터를 구독하여 TagLabel에 설정
+       
         viewModel.genreText
             .bind(with: self, onNext: { owner, genre in
                 owner.rootView.tagLabel.text = genre
@@ -59,8 +58,8 @@ final class HomeViewController: BaseViewController<HomeView> {
     }
     
     private func setPosterImage(from path: String?) {
-          guard let path = path else { return }
-          let imageUrl = "https://image.tmdb.org/t/p/w500\(path)"
+          guard let posterPath = path else { return }
+        let imageUrl = "\(APIUrl.photoBaseURL)\(posterPath)"
           let url = URL(string: imageUrl)
           rootView.posterImageView.kf.setImage(with: url)
       }

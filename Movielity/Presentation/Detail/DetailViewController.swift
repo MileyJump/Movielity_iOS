@@ -10,35 +10,26 @@ import UIKit
 import RxSwift
 import Kingfisher
 import SnapKit
-import RealmSwift
 
 final class DetailViewController: BaseViewController<DetailView> {
-    deinit {
-        print("deinit \(self)")
-    }
-    
+
     private let viewModel: DetailViewModel
-    private let realm = try! Realm()
-    
+
     init(movieModel: IntoDetailMovieModel) {
         self.viewModel = DetailViewModel(movieModel: movieModel)
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
-        
-        print("realm 위치: ", Realm.Configuration.defaultConfiguration.fileURL!)
     }
-    
- 
-    
+
     private func bind() {
         let output = viewModel.transform()
         
@@ -61,7 +52,7 @@ final class DetailViewController: BaseViewController<DetailView> {
                     }
                 }
                 
-                let fullImageUrl = "https://image.tmdb.org/t/p/w500\(imageUrl)"
+                let fullImageUrl = "\(APIUrl.photoBaseURL)\(imageUrl)"
                 if let url = URL(string: fullImageUrl) {
                     imageView.kf.setImage(with: url)
                 }
@@ -73,9 +64,9 @@ final class DetailViewController: BaseViewController<DetailView> {
                 owner.rootView.updateCollectionViewHeight()
             })
             .disposed(by: disposeBag)
-        
+
         output.posterImage
-            .compactMap { URL(string: "https://image.tmdb.org/t/p/w500\($0)") }
+            .compactMap { URL(string: "\(APIUrl.photoBaseURL)\($0)") }
             .bind(with: self, onNext: { owner, url in
                 owner.rootView.posterImageView.kf.setImage(with: url)
             })
@@ -92,13 +83,6 @@ final class DetailViewController: BaseViewController<DetailView> {
         output.overview
             .bind(to: rootView.overviewLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        
-        rootView.saveButton.rx.tap
-            .withLatestFrom(Observable.combineLatest(output.posterImage, output.title, output.id))
-            .bind(with: self) { owner, data in
-                let (posterImagePath, title, id) = data
-                owner.handleSave(posterImagePath: posterImagePath, title: title, id: id)
 
         rootView.saveButton.rx.tap
             .bind(with: self) { owner, _ in
@@ -107,23 +91,16 @@ final class DetailViewController: BaseViewController<DetailView> {
             .disposed(by: disposeBag)
         
         output.showSaveAlert
-            .filter { $0 }
-            .bind(with: self) { owner, _ in
-                owner.showSaveAlertView()
+            .bind(with: self) { owner, message in
+                owner.showSaveAlertView(with: message)
             }
             .disposed(by: disposeBag)
     }
-    
-    private func showSaveAlertView() {
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = .black.withAlphaComponent(0.6)
-        view.addSubview(backgroundView)
-        
-        backgroundView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
+
+    private func showSaveAlertView(with message: String) {
         let alertView = MovielityAlertView()
+        alertView.titleLabel.text = message
+        
         view.addSubview(alertView)
         
         alertView.snp.makeConstraints { make in
@@ -135,38 +112,7 @@ final class DetailViewController: BaseViewController<DetailView> {
         alertView.confirmButton.rx.tap
             .bind(with: self) { owner, _ in
                 alertView.removeFromSuperview()
-                backgroundView.removeFromSuperview()
             }
             .disposed(by: disposeBag)
     }
-    
-    
 }
-
-//뷰모델로 넘겨서 output 처리할지는 추후에 결정
-extension DetailViewController {
-    private func handleSave(posterImagePath: String, title: String, id: Int) {
-            if realm.object(ofType: SaveRealmMedia.self, forPrimaryKey: id) != nil {
-                showAlert(message: "이미 저장된 미디어 입니다!")
-            } else {
-                let movie = SaveRealmMedia()
-                movie.id = id
-                movie.title = title
-                movie.posterImagePath = posterImagePath
-
-                try! realm.write {
-                    realm.add(movie)
-                }
-                print("저장된 영화 - ID: \(id), Poster: \(posterImagePath), Title: \(title)")
-                showAlert(message: "미디어를 저장했어요 :)")
-            }
-        }
-
-        private func showAlert(message: String) {
-            let alertVC = CustomAlertViewController()
-            alertVC.modalPresentationStyle = .overFullScreen
-            alertVC.messageLabel.text = message
-            present(alertVC, animated: true, completion: nil)
-        }
-}
-
