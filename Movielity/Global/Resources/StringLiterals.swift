@@ -19,7 +19,7 @@ extension StringLiterals {
     }
     
     enum TabBarIcon {
-        static let homeTabBar = "house"
+        static let homeTabBar = "house.fill"
         static let searchTabBar = "magnifyingglass"
         static let downloadTabBar = "face.smiling"
     }
