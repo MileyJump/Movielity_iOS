@@ -67,6 +67,7 @@ final class HomeView: BaseView {
     override func setupUI() {
         nowHotMovieCollectionView.backgroundColor = CustomAppColors.backgroundBlack.color
         nowHotSeriesCollectionView.backgroundColor = CustomAppColors.backgroundBlack.color
+        backgroundColor = CustomAppColors.backgroundBlack.color
     }
     
     override func setupSubviews() {

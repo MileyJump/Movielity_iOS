@@ -13,13 +13,13 @@ extension StringLiterals {
     enum Phrase {
         // 탭바
         static let homeTabBar = "Home"
-        static let searchTabBar = "Search"
+        static let searchTabBar = "Top Search"
         static let downloadTabBar = "Download"
        
     }
     
     enum TabBarIcon {
-        static let homeTabBar = "house"
+        static let homeTabBar = "house.fill"
         static let searchTabBar = "magnifyingglass"
         static let downloadTabBar = "face.smiling"
     }

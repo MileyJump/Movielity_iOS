@@ -30,7 +30,7 @@ final class SearchViewController: BaseViewController<SearchView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "검색"
+        navigationItem.title = "검색"
         setupDelegates()
         setupNavigationItems()
         setupSearchBarBinding()
@@ -50,7 +50,6 @@ final class SearchViewController: BaseViewController<SearchView> {
                 owner.rootView.searchTableView.reloadData()
             }
             .disposed(by: disposeBag)
-        
     }
     
     //SearchViewController가 SearchResultsViewController의 delegate를 받아서 아이템 선택 시 화면 전환 수행

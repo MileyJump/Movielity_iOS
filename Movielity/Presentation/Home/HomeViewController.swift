@@ -55,6 +55,24 @@ final class HomeViewController: BaseViewController<HomeView> {
                 owner.rootView.tagLabel.text = genre
             })
             .disposed(by: disposeBag)
+        
+        // 지금 뜨는 영화 셀 선택 시 화면 전환
+        rootView.nowHotMovieCollectionView.rx.modelSelected(TrendingMovieResponse.self)
+            .bind(with: self) { owner, movie in
+                let movieModel = movie.toIntoDetailMovieModel()
+                let detailVC = DetailViewController(movieModel: movieModel)
+                owner.navigationController?.pushViewController(detailVC, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        // 지금 뜨는 TV시리즈 셀 선택 시 화면 전환
+        rootView.nowHotSeriesCollectionView.rx.modelSelected(TrendingSeriesResponse.self)
+            .bind(with: self) { owner, series in
+                let seriesModel = series.toIntoDetailSerieseModel()
+                let detailVC = DetailViewController(movieModel: seriesModel)
+                owner.navigationController?.pushViewController(detailVC, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setPosterImage(from path: String?) {
@@ -65,6 +83,7 @@ final class HomeViewController: BaseViewController<HomeView> {
       }
     
     override func setupUI() {
+        navigationItem.backButtonTitle = ""
         rootView.backgroundColor = CustomAppColors.backgroundBlack.color
         
         rootView.nowHotMovieCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
@@ -74,18 +93,20 @@ final class HomeViewController: BaseViewController<HomeView> {
     override func setupNavigationBar() {
         let search = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: nil, action: nil)
         let tv = UIBarButtonItem(image: UIImage(systemName: "sparkles.tv"), style: .plain, target: nil, action: nil)
+        let logoImage = UIBarButtonItem(image: UIImage(named: "Logo")?.withRenderingMode(.alwaysOriginal), style: .plain, target: nil, action: nil)
         
         navigationItem.rightBarButtonItems = [search, tv]
+        navigationItem.leftBarButtonItem = logoImage
         
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
         
         search.rx.tap
             .bind(with: self) { owner, _ in
                 owner.searchButtonTapped()
             }
             .disposed(by: disposeBag)
-
+        
         tv.rx.tap
             .bind(with: self) { owner, _ in
                 owner.tvButtonTapped()

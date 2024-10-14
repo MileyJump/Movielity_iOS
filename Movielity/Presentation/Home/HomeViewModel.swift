@@ -95,7 +95,6 @@ final class HomeViewModel {
                 let genreNames = genreResponse.genres
                     .filter { ids.contains($0.id) }
                     .map { $0.name }
-                print("===")
                 print(genreNames)
                 return genreNames.isEmpty ? "Unknown" : genreNames.joined(separator: " · ")
             }
