@@ -30,6 +30,7 @@
 		019E043B2CB9650D008753E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E043A2CB9650D008753E9 /* DetailViewController.swift */; };
 		019E043D2CB9651A008753E9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E043C2CB9651A008753E9 /* DetailView.swift */; };
 		019E04442CBA613D008753E9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E04432CBA613D008753E9 /* DetailViewModel.swift */; };
+		019E04542CBCF281008753E9 /* MovielityAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E04532CBCF281008753E9 /* MovielityAlertView.swift */; };
 		AA6522002CB5345800B56E01 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA6521FF2CB5345800B56E01 /* SnapKit */; };
 		AA6522062CB5352400B56E01 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA6522052CB5352400B56E01 /* RealmSwift */; };
 		AA6522072CB5353100B56E01 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA6522052CB5352400B56E01 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -112,6 +113,7 @@
 		019E043A2CB9650D008753E9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		019E043C2CB9651A008753E9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		019E04432CBA613D008753E9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		019E04532CBCF281008753E9 /* MovielityAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovielityAlertView.swift; sourceTree = "<group>"; };
 		AA6522D92CB68DE400B56E01 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		AA6522DB2CB68DF400B56E01 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AA6522DE2CB68ECE00B56E01 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				B0DA47172CBA38F6009DC941 /* CustomButton.swift */,
+				019E04532CBCF281008753E9 /* MovielityAlertView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				019E03BB2CB52274008753E9 /* SceneDelegate.swift in Sources */,
 				019E03EF2CB79272008753E9 /* TrendingSeries.swift in Sources */,
 				019E03D82CB661D9008753E9 /* Router.swift in Sources */,
+				019E04542CBCF281008753E9 /* MovielityAlertView.swift in Sources */,
 				019E03ED2CB75D56008753E9 /* TrendingNetworkManager.swift in Sources */,
 				019E03E62CB67A86008753E9 /* Search.swift in Sources */,
 				019E03DE2CB672EA008753E9 /* HTTPHeaderField.swift in Sources */,
