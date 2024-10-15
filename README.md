@@ -56,10 +56,11 @@ Movielity
     └── TabBar
 ```
 
+## 고민한 부분
+- [3개의 API Response값을 갖고 있는 ViewModel](https://github.com/Movielity/Movielity_iOS/wiki/%EA%B3%A0%EB%AF%BC%ED%96%88%EB%8D%98-%EB%B6%80%EB%B6%84_3%EA%B0%9C%EC%9D%98-API-Response%EA%B0%92%EC%9D%84-%EA%B0%96%EA%B3%A0-%EC%9E%88%EB%8A%94-DetailViewModel)
 
 
-
-### Github Convention
+## Github Convention
 - **Commit**: `[FEAT/#33] 액션 버튼 구현`
 - **Branch** : `feat/#33-main-view-ui`
 - **Issue** : `[FEAT] 메인 뷰 UI 구현`
