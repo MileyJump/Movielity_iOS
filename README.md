@@ -60,6 +60,9 @@ Movielity
 - [3개의 API Response값을 갖고 있는 ViewModel](https://github.com/Movielity/Movielity_iOS/wiki/%EA%B3%A0%EB%AF%BC%ED%96%88%EB%8D%98-%EB%B6%80%EB%B6%84_3%EA%B0%9C%EC%9D%98-API-Response%EA%B0%92%EC%9D%84-%EA%B0%96%EA%B3%A0-%EC%9E%88%EB%8A%94-DetailViewModel)
 
 
+## 트러블 슈팅
+- [SearchViewController와 SearchResultsViewController에서의 화면 전환 문제](https://github.com/Movielity/Movielity_iOS/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_SearchViewController%EC%99%80-SearchResultsViewController%EC%97%90%EC%84%9C%EC%9D%98-%ED%99%94%EB%A9%B4-%EC%A0%84%ED%99%98-%EB%AC%B8%EC%A0%9C)
+
 ## Github Convention
 - **Commit**: `[FEAT/#33] 액션 버튼 구현`
 - **Branch** : `feat/#33-main-view-ui`
