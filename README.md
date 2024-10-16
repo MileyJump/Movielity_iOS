@@ -66,7 +66,7 @@ Movielity
 
 
 ## 😨 트러블 슈팅
-- [HomeController 메인 포스터에서 영화와 시리즈 데이터를 결합하는 과정에서 선택된 포스터가 다른 콘텐츠로 연결되는 문제](https://github.com/Movielity/Movielity_iOS/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_SearchViewController%EC%99%80-SearchResultsViewController%EC%97%90%EC%84%9C%EC%9D%98-%ED%99%94%EB%A9%B4-%EC%A0%84%ED%99%98-%EB%AC%B8%EC%A0%9C)
+- [HomeViewController 메인 포스터에서 영화와 시리즈 데이터를 결합하는 과정에서 선택된 포스터가 다른 콘텐츠로 연결되는 문제](https://github.com/Movielity/Movielity_iOS/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_SearchViewController%EC%99%80-SearchResultsViewController%EC%97%90%EC%84%9C%EC%9D%98-%ED%99%94%EB%A9%B4-%EC%A0%84%ED%99%98-%EB%AC%B8%EC%A0%9C)
 - [SearchViewController와 SearchResultsViewController에서의 화면 전환 문제](https://github.com/Movielity/Movielity_iOS/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_SearchViewController%EC%99%80-SearchResultsViewController%EC%97%90%EC%84%9C%EC%9D%98-%ED%99%94%EB%A9%B4-%EC%A0%84%ED%99%98-%EB%AC%B8%EC%A0%9C)
 - [UISearchController의 searchBar를 통해 사용자가 검색어를 입력하는 순간마다 실시간으로 검색 반응 문제](https://github.com/Movielity/Movielity_iOS/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%C2%A0UISearchController%EC%9D%98-searchBar%EB%A5%BC-%ED%86%B5%ED%95%B4-%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80-%EA%B2%80%EC%83%89%EC%96%B4%EB%A5%BC-%EC%9E%85%EB%A0%A5%ED%95%98%EB%8A%94-%EC%88%9C%EA%B0%84%EB%A7%88%EB%8B%A4%C2%A0%EC%8B%A4%EC%8B%9C%EA%B0%84%EC%9C%BC%EB%A1%9C-%EA%B2%80%EC%83%89-%EB%B0%98%EC%9D%91-%EB%AC%B8%EC%A0%9C)
 
