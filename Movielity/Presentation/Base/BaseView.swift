@@ -11,9 +11,9 @@ class BaseView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupSubviews()
-        setupLayout()
-        setupUI()
+        configureSubviews()
+        configureLayout()
+        configureUI()
     }
     
     @available(*, unavailable)
@@ -21,11 +21,11 @@ class BaseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupSubviews() { }
+    func configureSubviews() { }
     
-    func setupLayout() { }
+    func configureLayout() { }
     
-    func setupUI() {
+    func configureUI() {
         backgroundColor = .black
     }
 }

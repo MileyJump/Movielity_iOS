@@ -24,11 +24,11 @@ final class HomeCollectionViewCell: BaseCollectionViewCell {
         super.init(frame: frame)
     }
     
-    override func setupSubviews() {
+    override func configureSubviews() {
         addSubview(posterImageView)
     }
     
-    override func setupLayout() {
+    override func configureLayout() {
         posterImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
