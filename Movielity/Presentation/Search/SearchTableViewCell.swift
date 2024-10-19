@@ -35,17 +35,17 @@ final class SearchTableViewCell: BaseTableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        configureSubviews()
-        configureLayout()
+        setupSubviews()
+        setupLayout()
     }
     
-    override func configureSubviews() {
+    override func setupSubviews() {
         contentView.addSubview(posterImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(playButtonCircle)
     }
     
-    override func configureLayout() {
+    override func setupLayout() {
         posterImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.top.equalToSuperview().offset(5)

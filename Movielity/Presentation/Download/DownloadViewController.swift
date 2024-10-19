@@ -37,8 +37,8 @@ final class DownloadViewController: BaseViewController<DownloadView> {
         rootView.searchTableView.dataSource = self
     }
 
-    override func configureNavigationBar() {
-        super.configureNavigationBar()
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
