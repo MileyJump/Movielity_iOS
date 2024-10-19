@@ -15,11 +15,11 @@ final class SearchView: BaseView {
         $0.backgroundColor = CustomAppColors.backgroundBlack.color
     }
     
-    override func setupSubviews() {
+    override func         configureSubviews() {
         addSubview(searchTableView)
     }
     
-    override func setupLayout() {
+    override func configureLayout() {
         searchTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

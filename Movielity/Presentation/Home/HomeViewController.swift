@@ -99,7 +99,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         rootView.nowHotSeriesCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
     }
     
-    override func setupNavigationBar() {
+    override func configureNavigationBar() {
         let search = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: nil, action: nil)
         let tv = UIBarButtonItem(image: UIImage(systemName: "sparkles.tv"), style: .plain, target: nil, action: nil)
         let logoImage = UIBarButtonItem(image: UIImage(named: "Logo")?.withRenderingMode(.alwaysOriginal), style: .plain, target: nil, action: nil)

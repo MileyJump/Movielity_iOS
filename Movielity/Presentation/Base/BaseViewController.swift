@@ -20,24 +20,24 @@ class BaseViewController<RootView: UIView>: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSubviews()
-        setupLayout()
+        configureSubviews()
+        configureLayout()
         setupUI()
-        setupAddTarget()
-        setupNavigationBar()
+        configureAddTarget()
+        configureNavigationBar()
     }
     
-    func setupSubviews() { }
+    func configureSubviews() { }
     
-    func setupLayout() { }
+    func configureLayout() { }
     
     func setupUI() {
         navigationItem.backButtonTitle = ""
         view.backgroundColor = .white
     }
     
-    func setupAddTarget() { }
+    func configureAddTarget() { }
     
-    func setupNavigationBar() {
+    func configureNavigationBar() {
     }
 }

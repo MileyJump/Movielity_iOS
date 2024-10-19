@@ -11,9 +11,9 @@ class BaseTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupSubviews()
-        setupLayout()
-        setupUI()
+        configureSubviews()
+        configureLayout()
+        configureUI()
     }
     
     @available(*, unavailable)
@@ -21,10 +21,10 @@ class BaseTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupSubviews() { }
+    func configureSubviews() { }
     
-    func setupLayout() { }
+    func configureLayout() { }
     
-    func setupUI() { }
+    func configureUI() { }
     
 }

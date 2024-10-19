@@ -23,13 +23,13 @@ final class SearchResultsViewController: BaseViewController<SearchResultsView> {
         setupDelegates()
     }
     
-    override func setupSubviews() {
-        super.setupSubviews()
+    override func configureSubviews() {
+        super.configureSubviews()
         rootView.addSubview(rootView.searchResultsCollectionView)
     }
     
-    override func setupLayout() {
-        super.setupLayout()
+    override func configureLayout() {
+        super.configureLayout()
         rootView.searchResultsCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
