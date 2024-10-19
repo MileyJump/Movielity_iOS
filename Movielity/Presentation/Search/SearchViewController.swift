@@ -75,8 +75,8 @@ final class SearchViewController: BaseViewController<SearchView> {
         navigationItem.searchController = searchController
     }
     
-    override func configureNavigationBar() {
-        super.configureNavigationBar()
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.tintColor = .white

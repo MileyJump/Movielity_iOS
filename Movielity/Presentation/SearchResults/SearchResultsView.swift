@@ -21,11 +21,11 @@ final class SearchResultsView: BaseView {
         return collectionView
     }()
     
-    override func         configureSubviews() {
+    override func         setupSubviews() {
         addSubview(searchResultsCollectionView)
     }
     
-    override func configureLayout() {
+    override func setupLayout() {
         searchResultsCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

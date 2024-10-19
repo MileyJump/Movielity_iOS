@@ -11,9 +11,9 @@ class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureSubviews()
-        configureLayout()
-        configureUI()
+        setupSubviews()
+        setupLayout()
+        setupUI()
     }
     
     @available(*, unavailable)
@@ -22,11 +22,11 @@ class BaseCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func configureSubviews() { }
+    func setupSubviews() { }
     
-    func configureLayout() { }
+    func setupLayout() { }
     
-    func configureUI() { }
+    func setupUI() { }
     
     
 }

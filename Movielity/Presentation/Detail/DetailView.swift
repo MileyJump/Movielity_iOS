@@ -39,7 +39,7 @@ final class DetailView: BaseView {
         return collectionView
     }()
     
-    override func         configureSubviews() {
+    override func         setupSubviews() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         
@@ -54,7 +54,7 @@ final class DetailView: BaseView {
         contentView.addSubview(similarCollectionView)
     }
     
-    override func configureUI() {
+    override func setupUI() {
         scrollView.backgroundColor = .black
         
         posterImageView.image = UIImage(systemName: "star")
@@ -79,7 +79,7 @@ final class DetailView: BaseView {
         similarCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
     
-    override func configureLayout() {
+    override func setupLayout() {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

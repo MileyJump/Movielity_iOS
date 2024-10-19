@@ -13,12 +13,12 @@ class MovielityAlertView: BaseView {
     let titleLabel = UILabel()
     let confirmButton = UIButton()
 
-    override func         configureSubviews() {
+    override func         setupSubviews() {
         addSubview(titleLabel)
         addSubview(confirmButton)
     }
 
-    override func configureUI() {
+    override func setupUI() {
         backgroundColor = UIColor.black.withAlphaComponent(0.8)
         layer.cornerRadius = 10
         clipsToBounds = true
@@ -33,7 +33,7 @@ class MovielityAlertView: BaseView {
         confirmButton.backgroundColor = .red
     }
 
-    override func configureLayout() {
+    override func setupLayout() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
             make.horizontalEdges.equalToSuperview().inset(20)

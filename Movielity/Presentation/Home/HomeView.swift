@@ -64,13 +64,13 @@ final class HomeView: BaseView {
         super.init(frame: frame)
     }
     
-    override func configureUI() {
+    override func setupUI() {
         nowHotMovieCollectionView.backgroundColor = CustomAppColors.backgroundBlack.color
         nowHotSeriesCollectionView.backgroundColor = CustomAppColors.backgroundBlack.color
         backgroundColor = CustomAppColors.backgroundBlack.color
     }
     
-    override func         configureSubviews() {
+    override func         setupSubviews() {
         
         addSubview(contentScrollView)
         contentScrollView.addSubview(contentView)
@@ -84,7 +84,7 @@ final class HomeView: BaseView {
         contentView.addSubview(nowHotSeriesCollectionView)
     }
     
-    override func configureLayout() {
+    override func setupLayout() {
         
         contentScrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
