@@ -6,9 +6,9 @@
 
 
 ## 📱 시뮬레이션
-| 검색 화면 | 홈 화면 | 다운로드 화면 | 상세 화면 |
-|---------------|---------------|---------------|---------------|
-| <img src="https://github.com/user-attachments/assets/db9b5552-12e7-4212-8204-a926a3680e9c" width="200" /> | <img src="https://github.com/user-attachments/assets/c73a08a0-2d5b-4801-af38-92560b64bee6" width="200" />> | <img src="https://github.com/user-attachments/assets/4efdbc41-e2fb-4d9c-9829-6b12fb3895e1" width="200" /> | <img src="https://github.com/user-attachments/assets/c9f6240a-7ab0-4cfe-841f-070867a2e0cf" width="200" />
+| 검색 화면 | 홈 화면 |
+|---------------|---------------|
+|  |  |
 
 ## ⚙️ 주요 기능
 - **TMDB API**를 통한 **영화 정보** 검색
