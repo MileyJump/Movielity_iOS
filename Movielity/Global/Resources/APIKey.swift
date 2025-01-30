@@ -8,5 +8,5 @@
 import Foundation
 
 struct APIKey {
-    static let tmdbKey = "여러분들의 키를 넣어주세요><"
+    static let tmdbKey = "1050c33c07718f0812f4682a280c19bd"
 }

@@ -19,10 +19,14 @@ final class DetailView: BaseView {
                                   title: "재생",
                                   backgroundColor: .white,
                                   tintColor: .black)
+    
+    let reviewsButton = CustomButton(image: UIImage(systemName: "square.and.pencil"), title: "관람평", backgroundColor: .white, tintColor: .black)
+    
     let saveButton = CustomButton(image: UIImage(systemName: "square.and.arrow.down"),
                                   title: "저장",
                                   backgroundColor: .darkGray,
                                   tintColor: .white)
+    
     let overviewLabel = UILabel()
     let castLabel = UILabel()
     let similarLabel = UILabel()
@@ -47,6 +51,7 @@ final class DetailView: BaseView {
         contentView.addSubview(titleLabel)
         contentView.addSubview(voteAverageLabel)
         contentView.addSubview(playButton)
+        contentView.addSubview(reviewsButton)
         contentView.addSubview(saveButton)
         contentView.addSubview(overviewLabel)
         contentView.addSubview(castLabel)
@@ -111,8 +116,14 @@ final class DetailView: BaseView {
             make.height.equalTo(35)
         }
         
-        saveButton.snp.makeConstraints { make in
+        reviewsButton.snp.makeConstraints { make in
             make.top.equalTo(playButton.snp.bottom).offset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(35)
+        }
+        
+        saveButton.snp.makeConstraints { make in
+            make.top.equalTo(reviewsButton.snp.bottom).offset(16)
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(35)
         }

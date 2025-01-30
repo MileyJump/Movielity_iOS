@@ -14,9 +14,11 @@ import SnapKit
 final class DetailViewController: BaseViewController<DetailView> {
 
     private let viewModel: DetailViewModel
+    private let movieModel: IntoDetailMovieModel
 
     init(movieModel: IntoDetailMovieModel) {
         self.viewModel = DetailViewModel(movieModel: movieModel)
+        self.movieModel = movieModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -87,6 +89,14 @@ final class DetailViewController: BaseViewController<DetailView> {
         rootView.saveButton.rx.tap
             .bind(with: self) { owner, _ in
                 owner.viewModel.triggerSaveAlert()
+            }
+            .disposed(by: disposeBag)
+        
+        rootView.reviewsButton.rx.tap
+            .bind(with: self) { owner, _ in
+                let reviewVC = ReviewsViewController(movieModel: owner.movieModel)
+                
+                owner.navigationController?.pushViewController(reviewVC, animated: true)
             }
             .disposed(by: disposeBag)
         

@@ -19,6 +19,8 @@ enum Router {
     case creditsSeries(series_id: Int)
     case genreMovie
     case genreSeries
+    case reviewsMovie(movie_id: Int)
+    case reviewsSeries(series_id: Int)
 }
 
 extension Router: TargetType {
@@ -52,6 +54,10 @@ extension Router: TargetType {
             return "/genre/movie/list"
         case .genreSeries:
             return "/genre/tv/list"
+        case .reviewsMovie(let movie_id):
+            return "/movie/\(movie_id)/reviews"
+        case .reviewsSeries(let series_id):
+            return "/tv/\(series_id)/reviews"
         }
     }
     

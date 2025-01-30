@@ -70,6 +70,12 @@
 		B037EBCB2CB7FE2500229EAE /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBCA2CB7FE2500229EAE /* DownloadViewController.swift */; };
 		B037EBCD2CB7FE5500229EAE /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBCC2CB7FE5500229EAE /* DownloadView.swift */; };
 		B037EBF42CB922D200229EAE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037EBF32CB922D200229EAE /* HomeViewModel.swift */; };
+		B0B7DE502D4B9A40006D2488 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B7DE4F2D4B9A40006D2488 /* ReviewsView.swift */; };
+		B0B7DE522D4B9A4E006D2488 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B7DE512D4B9A4E006D2488 /* ReviewsViewController.swift */; };
+		B0B7DE542D4B9B50006D2488 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B7DE532D4B9B50006D2488 /* ReviewsTableViewCell.swift */; };
+		B0B7DE572D4BA871006D2488 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B7DE562D4BA871006D2488 /* Reviews.swift */; };
+		B0B7DE592D4BAA3A006D2488 /* ReviewsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B7DE582D4BAA3A006D2488 /* ReviewsNetworkManager.swift */; };
+		B0B7DE5B2D4BACCA006D2488 /* ReviewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B7DE5A2D4BACCA006D2488 /* ReviewsModel.swift */; };
 		B0DA47182CBA38F6009DC941 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DA47172CBA38F6009DC941 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +151,12 @@
 		B037EBCA2CB7FE2500229EAE /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		B037EBCC2CB7FE5500229EAE /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		B037EBF32CB922D200229EAE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B0B7DE4F2D4B9A40006D2488 /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
+		B0B7DE512D4B9A4E006D2488 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		B0B7DE532D4B9B50006D2488 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		B0B7DE562D4BA871006D2488 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		B0B7DE582D4BAA3A006D2488 /* ReviewsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsNetworkManager.swift; sourceTree = "<group>"; };
+		B0B7DE5A2D4BACCA006D2488 /* ReviewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsModel.swift; sourceTree = "<group>"; };
 		B0DA47172CBA38F6009DC941 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +211,7 @@
 		019E03D42CB65AE6008753E9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B0B7DE552D4BA850006D2488 /* Reviews */,
 				019E04342CB95AF5008753E9 /* Genre */,
 				019E042D2CB956A1008753E9 /* Credits */,
 				019E04262CB95274008753E9 /* Similar */,
@@ -279,6 +292,7 @@
 		AA6522D22CB68C8C00B56E01 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B0B7DE4E2D4B9A34006D2488 /* Reviews */,
 				AA6523282CB7E3F100B56E01 /* Base */,
 				AA6523172CB7DD5100B56E01 /* Home */,
 				AA6523162CB7DD1800B56E01 /* SearchResults */,
@@ -413,6 +427,26 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		B0B7DE4E2D4B9A34006D2488 /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				B0B7DE4F2D4B9A40006D2488 /* ReviewsView.swift */,
+				B0B7DE532D4B9B50006D2488 /* ReviewsTableViewCell.swift */,
+				B0B7DE512D4B9A4E006D2488 /* ReviewsViewController.swift */,
+				B0B7DE5A2D4BACCA006D2488 /* ReviewsModel.swift */,
+			);
+			path = Reviews;
+			sourceTree = "<group>";
+		};
+		B0B7DE552D4BA850006D2488 /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				B0B7DE562D4BA871006D2488 /* Reviews.swift */,
+				B0B7DE582D4BAA3A006D2488 /* ReviewsNetworkManager.swift */,
+			);
+			path = Reviews;
+			sourceTree = "<group>";
+		};
 		B0DA47162CBA38A0009DC941 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +572,7 @@
 				AA6523312CB7E46600B56E01 /* BaseCollectionViewCell.swift in Sources */,
 				AAD8B0B52CBBB46300ED45CC /* SearchResultsDelegate.swift in Sources */,
 				B037EBB62CB7BA9E00229EAE /* HomeView.swift in Sources */,
+				B0B7DE5B2D4BACCA006D2488 /* ReviewsModel.swift in Sources */,
 				B037EBB82CB7BABC00229EAE /* ReusableProtocol.swift in Sources */,
 				B037EBC62CB7F90200229EAE /* MovielityTabBar.swift in Sources */,
 				B037EBB22CB7BA8000229EAE /* UICollectionViewLayout +.swift in Sources */,
@@ -547,11 +582,15 @@
 				B037EBCD2CB7FE5500229EAE /* DownloadView.swift in Sources */,
 				019E03B92CB52274008753E9 /* AppDelegate.swift in Sources */,
 				019E043B2CB9650D008753E9 /* DetailViewController.swift in Sources */,
+				B0B7DE502D4B9A40006D2488 /* ReviewsView.swift in Sources */,
+				B0B7DE542D4B9B50006D2488 /* ReviewsTableViewCell.swift in Sources */,
 				B037EBC22CB7CB9300229EAE /* APIKey.swift in Sources */,
+				B0B7DE572D4BA871006D2488 /* Reviews.swift in Sources */,
 				B037EBAE2CB7BA5F00229EAE /* HomeCollectionViewCell.swift in Sources */,
 				019E04382CB95B55008753E9 /* GenreNetworkManager.swift in Sources */,
 				B037EBAC2CB7BA4E00229EAE /* HomeViewController.swift in Sources */,
 				B037EBC02CB7CB6800229EAE /* APIUrl.swift in Sources */,
+				B0B7DE592D4BAA3A006D2488 /* ReviewsNetworkManager.swift in Sources */,
 				B037EBC82CB7FA3300229EAE /* StringLiterals.swift in Sources */,
 				019E03BB2CB52274008753E9 /* SceneDelegate.swift in Sources */,
 				019E03EF2CB79272008753E9 /* TrendingSeries.swift in Sources */,
@@ -561,6 +600,7 @@
 				019E03E62CB67A86008753E9 /* Search.swift in Sources */,
 				019E03DE2CB672EA008753E9 /* HTTPHeaderField.swift in Sources */,
 				019E04362CB95B2B008753E9 /* Genre.swift in Sources */,
+				B0B7DE522D4B9A4E006D2488 /* ReviewsViewController.swift in Sources */,
 				019E04282CB95338008753E9 /* SimilarMovie.swift in Sources */,
 				019E03DA2CB669DF008753E9 /* TargetType.swift in Sources */,
 				AA65232A2CB7E41500B56E01 /* BaseView.swift in Sources */,
@@ -707,6 +747,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q35ZG4845H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movielity/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "무빌리티";
@@ -715,6 +756,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -735,6 +777,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q35ZG4845H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Movielity/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "무빌리티";
@@ -743,6 +786,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
